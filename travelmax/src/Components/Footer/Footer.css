@@ -1,0 +1,19 @@
+.Footer{
+    text-decoration: none;
+    list-style: none;
+    color: red!important;
+    
+}
+
+.Footer li{
+    text-decoration: none;
+    list-style: none;
+    color: #000 !important;
+    
+}
+
+.Footer li a:hover{
+     color: #000!important;
+     text-decoration: none!important;
+     border-bottom: 2px solid #ef5635 !important;
+}
