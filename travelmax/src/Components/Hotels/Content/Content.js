@@ -71,7 +71,7 @@ class Content extends Component{
                                      <Typography variant="h4" gutterBottom>
                                         Travelmax: Global hotels Search
                                      </Typography>
-                                                              trivago’s hotel search allows users to compare hotel prices in just a few clicks from more than 400 booking sites for 1.8 million+ hotels in over 190 countries. With 1.4 billion visits annually to our site, travelers regularly use the hotel comparison to compare deals in the same city. Get information for trips to cities like Las Vegas or Orlando and you can find the right hotel on trivago quickly and easily. New York City and its surrounding area are great for trips that are a week or longer with the numerous hotels available
+                                                              Travelmax hotel search allows users to compare hotel prices in just a few clicks. Travelers regularly use the hotel comparison to compare deals in the same city. Get information for trips to cities like Cape Town or Nairobi and you can find the right hotel on travelmax quickly and easily. Lagos City and its surrounding area are great for trips that are a week or longer with numerous hotels available
                                 </Paper>
                          </Grid> 
                   </Grid> 
@@ -125,7 +125,7 @@ class Content extends Component{
                                  <Typography variant="h4" gutterBottom>
                                     Find Cheap and Available Hotels on Travelmax
                                  </Typography>
-                                                           With trivago you can easily find your ideal hotel and compare prices from different websites. Simply enter where you want to go and your desired travel dates, and let our hotel search engine compare accommodation prices for you. To refine your search results, simply filter by price, distance (e.g. from the beach), star category, facilities and more. From budget hostels to luxury suites, trivago makes it easy to book online. You can search from a large variety of rooms and locations across the USA, like San Francisco and Chicago to popular cities and holiday destinations abroad!
+                                                            With Travelmax you can easily find your ideal hotel and compare prices from different website. Simply enter where you want to go and your desired travel dates, and let our hotel search engine compare accommodation prices for you. To refine your search results, simply filter by price, distance (e.g. from the beach), star category, facilities and more. From budget hostels to luxury suites, travelmax makes it easy to book online. You can search from a large variety of rooms and locations across the Africa, like Durban and Johannesburg to popular cities and holiday destinations abroad!
                             </Paper>
                         </Grid> 
                       </Grid>
@@ -141,28 +141,46 @@ class Content extends Component{
                                        {open ? (
                                             <Row style={{color: 'black'}}>
                                                 <Col md="6">
-                                                      <ul className={classes.Links}>
+                                                      <ul style={{textAlign: 'left'}} className={classes.Links}>
                                                         <li className="list-unstyled">
-                                                         Sheraton Hotel
+                                                         Double M Exquisite Suites And Lounge
                                                         </li>
                                                         <li className="list-unstyled">
-                                                          Victoria Hotel
+                                                          Integrity Hotel And Suites
                                                         </li>
                                                         <li className="list-unstyled">
-                                                          Redemption
+                                                          November 5 Hotel
+                                                        </li>
+                                                         <li className="list-unstyled">
+                                                          Extended Stay Grand Hotel
+                                                        </li>
+                                                         <li className="list-unstyled">
+                                                         The George 
+                                                        </li>
+                                                         <li className="list-unstyled">
+                                                          Hotel Ibis Lagos Ikeja
                                                         </li>
                                                       </ul>
                                                  </Col>
                                                  <Col md="6">
-                                                      <ul className={classes.Links}>
+                                                      <ul style={{textAlign: 'left'}} className={classes.Links}>
                                                         <li className="list-unstyled">
-                                                         ₦25,000.00 +
+                                                         ₦20,000.00 +
                                                         </li>
                                                         <li className="list-unstyled">
-                                                         ₦25,000.00 +
+                                                         ₦10,000.00 +
                                                         </li>
                                                         <li className="list-unstyled">
-                                                          ₦25,000.00 +
+                                                         ₦12,000.00 +
+                                                        </li>
+                                                        <li className="list-unstyled">
+                                                         ₦12,000.00 +
+                                                        </li>
+                                                        <li className="list-unstyled">
+                                                         ₦100,000.00 +
+                                                        </li>
+                                                        <li className="list-unstyled">
+                                                         ₦26,000.00 +
                                                         </li>
                                                       </ul>
                                                  </Col>
@@ -173,7 +191,7 @@ class Content extends Component{
                                 </div>
                             
                              {/* Lagos hotels*/}
-                            <div className={classes.root}>
+                            {/*<div className={classes.root}>
                                 <ClickAwayListener onClickAway={this.handleClickAway}>
                                   <div>
                                      <Button color="link" onClick={this.handleClick} style={{textDecoration: 'none', padding: '10px 10px 10px 0', color: '#000', borderBottom: '2px solid #ef5635', width: '200px', textAlign: 'center', marginBottom: 'auto' }}>Lagos Hotels<span style={{marginTop: 'auto'}}><MaterialIcon icon="keyboard_arrow_down" color='grey' size={35}/></span></Button>
@@ -209,7 +227,7 @@ class Content extends Component{
                                          ) : null}
                                         </div>
                                     </ClickAwayListener>
-                                </div>
+                                </div>*/}
                              </Paper>
                           </Grid>
                          </Grid> 
