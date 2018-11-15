@@ -25,6 +25,11 @@ import Johannesburg from '../../../Assets/Images/Slider/top_cities/Johannesburg.
 
 // Hotels Prices
 import AbujaHotels from './Hotels_price/AbujaHotels';
+import JosHotels from './Hotels_price/JosHotels';
+import KanoHotels from './Hotels_price/KanoHotels';
+import RiversHotels from './Hotels_price/RiversHotels';
+import AkwaIbomHotels from './Hotels_price/AkwaIbomHotels';
+
 
 const styles = theme => ({
   root: {
@@ -197,6 +202,10 @@ class Content extends Component{
                             
                              {/* Lagos hotels*/}
                             <AbujaHotels />
+                            <JosHotels />
+                            <KanoHotels />
+                            <RiversHotels />
+                            <AkwaIbomHotels />
                              </Paper>
                           </Grid>
                          </Grid> 

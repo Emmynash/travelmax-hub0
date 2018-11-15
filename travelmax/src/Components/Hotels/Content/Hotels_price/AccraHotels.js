@@ -6,7 +6,7 @@ import MaterialIcon from 'material-icons-react';
 
 
 
-class AbujaHotels extends Component{
+class AccraHotels extends Component{
    
    state = {
     open: false,
@@ -47,13 +47,13 @@ return(
                               House 9 Apartments
                             </li>
                              <li className="list-unstyled">
-                              Chelsea Hotel 
+                              Chelsea Hotel (Central Business District) 
                             </li>
                              <li className="list-unstyled">
                               Grand Ibro Hotel
                             </li>
                              <li className="list-unstyled">
-                              Newton Park Hotels 
+                              Newton Park Hotels And Resorts Limited Annex
                             </li>
                           </ul>
                      </Col>
@@ -89,6 +89,6 @@ return(
     
 }
 
-export default AbujaHotels;
+export default AccraHotels;
                                 
                                 

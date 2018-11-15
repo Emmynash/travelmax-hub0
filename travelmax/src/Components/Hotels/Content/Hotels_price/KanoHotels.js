@@ -6,7 +6,7 @@ import MaterialIcon from 'material-icons-react';
 
 
 
-class AbujaHotels extends Component{
+class KanoHotels extends Component{
    
    state = {
     open: false,
@@ -32,50 +32,50 @@ return(
  <div>
     <ClickAwayListener onClickAway={this.handleClickAway}>
       <div>
-         <Button color="inherit" onClick={this.handleClick} style={{textDecoration: 'none', padding: '10px 10px 10px 0', color: '#000', borderBottom: '2px solid #ef5635', width: '200px', textAlign: 'center', marginBottom: 'auto' }}>Abuja Hotels<span style={{marginTop: 'auto'}}><MaterialIcon icon="keyboard_arrow_down" color='grey' size={35}/></span></Button>
+         <Button color="inherit" onClick={this.handleClick} style={{textDecoration: 'none', padding: '10px 10px 10px 0', color: '#000', borderBottom: '2px solid #ef5635', width: '200px', textAlign: 'center', marginBottom: 'auto' }}>Kano Hotels<span style={{marginTop: 'auto'}}><MaterialIcon icon="keyboard_arrow_down" color='grey' size={35}/></span></Button>
            {open ? (
                 <Row style={{color: 'black', alignItems: 'center'}}>
                     <Col md="6">
                           <ul style={{textAlign: 'left', marginLeft: '100px'}}>
                             <li className="list-unstyled">
-                             The Corinthia Villa Hotel & Suites
+                              Bristol Palace Hotel 
                             </li>
                             <li className="list-unstyled">
-                              Fraser Suites Abuja
+                              Prince Hotel
                             </li>
                             <li className="list-unstyled">
-                              House 9 Apartments
+                             Sultanate Suites
                             </li>
                              <li className="list-unstyled">
-                              Chelsea Hotel 
+                              Royal Tropicana Hotel 
                             </li>
                              <li className="list-unstyled">
-                              Grand Ibro Hotel
+                              Haitel Guest Inn
                             </li>
                              <li className="list-unstyled">
-                              Newton Park Hotels 
+                              Tahir Guest Palace
                             </li>
                           </ul>
                      </Col>
                      <Col md="6">
                           <ul style={{textAlign: 'left', marginLeft: '100px'}} >
                             <li className="list-unstyled">
-                             ₦38,000.00 +
+                             ₦32,400.00 +
                             </li>
                             <li className="list-unstyled">
-                             ₦96,500.00 +
+                             ₦29,000.00 +
                             </li>
                             <li className="list-unstyled">
-                             ₦15,000.00 +
+                             ₦10,600.00 +
                             </li>
                             <li className="list-unstyled">
-                             ₦43,650.00 +
+                             ₦11,700.00 +
                             </li>
                             <li className="list-unstyled">
-                             ₦10,000.00 +
+                             ₦10,00.00 +
                             </li>
                             <li className="list-unstyled">
-                             ₦31,500.00 +
+                             ₦20,416.00 +
                             </li>
                           </ul>
                      </Col>
@@ -89,6 +89,6 @@ return(
     
 }
 
-export default AbujaHotels;
+export default KanoHotels;
                                 
                                 
