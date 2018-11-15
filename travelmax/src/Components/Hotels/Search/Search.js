@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -8,6 +8,10 @@ import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import image from '../../../Assets/Images/Hotel_2.jpg';
 import content from './search.css';
+
+import DatePicker from "react-datepicker";
+import moment from "moment";
+import "react-datepicker/dist/react-datepicker.css";
 
 
 const styles = theme => ({
@@ -83,8 +87,29 @@ const backImage = {
    backgroundRepeat: 'no-repeat'
  }
 };
-const Search = (props) =>{
-    const{classes} = props;
+class Search extends Component{
+  constructor(props) {
+    super(props);
+    this.state = {
+      startDate: moment(),
+      isOpen: false
+    };
+    this.handleChange = this.handleChange.bind(this);
+    this.toggleCalendar = this.toggleCalendar.bind(this);
+  }
+ 
+  handleChange (date) {
+  this.setState({startDate: date});
+  this.toggleCalendar();
+}
+
+toggleCalendar (e) {
+  e && e.preventDefault();
+  this.setState({isOpen: !this.state.isOpen});
+}
+  
+  render(){
+    const{classes} = this.props;
     return(
          
     <div className={classes.root}>
@@ -103,24 +128,50 @@ const Search = (props) =>{
             />
           </div>
           <div className={classes.search} style={{marginLeft: '1px', textAlign: 'left'}}>
-            <InputBase
+            <Button
+            classes={{
+                root: classes.inputRoot,
+                input: classes.inputInput,
+              }}
               placeholder="Check-in"
               style={{height: '38px', width: '120px',  textAlign: 'left'}}
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-            />
+              className="example-custom-input"
+              onClick={this.toggleCalendar}>
+              {this.state.startDate.format("DD-MM-YYYY")}
+            </Button>
+            {
+              this.state.isOpen && (
+                  <DatePicker
+                      selected={this.state.startDate}
+                      onChange={this.handleChange}
+                      withPortal
+                      inline />
+                  )
+              }
+           
           </div>
           <div className={classes.search} style={{marginLeft: '1px', textAlign: 'left'}}>
-            <InputBase
-              placeholder="Check-out"
-              style={{height: '38px', width: '120px',  textAlign: 'left'}}
-              classes={{
+            <Button
+            classes={{
                 root: classes.inputRoot,
                 input: classes.inputInput,
               }}
-            />
+              placeholder="Check-out"
+              style={{height: '38px', width: '120px',  textAlign: 'left'}}
+              className="example-custom-input"
+              onClick={this.toggleCalendar}>
+              {this.state.startDate.format("DD-MM-YYYY")}
+            </Button>
+            {
+              this.state.isOpen && (
+                  <DatePicker
+                      selected={this.state.startDate}
+                      onChange={this.handleChange}
+                      withPortal
+                      inline />
+                  )
+              }
+           
           </div>
           <div className={classes.search} style={{marginLeft: '1px', textAlign: 'left'}}>
             <InputBase
@@ -140,7 +191,8 @@ const Search = (props) =>{
   </div>
        
         );
-};
+    }
+}
 
 Search.propTypes = {
   classes: PropTypes.object.isRequired,

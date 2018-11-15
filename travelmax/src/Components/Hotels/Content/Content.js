@@ -23,6 +23,8 @@ import London from '../../../Assets/Images/Slider/top_cities/London.jpeg';
 import Nairobi from '../../../Assets/Images/Slider/top_cities/Nairobi.jpg';
 import Johannesburg from '../../../Assets/Images/Slider/top_cities/Johannesburg.jpg';
 
+// Hotels Prices
+import AbujaHotels from './Hotels_price/AbujaHotels';
 
 const styles = theme => ({
   root: {
@@ -132,16 +134,19 @@ class Content extends Component{
                         <Grid className={grid.content} container spacing={24}>
                          <Grid item xs={12}>
                            <Paper className={classes.paper}>
+                           <Typography variant="h6" gutterBottom>
+                                    Find hotels that suit your budget!
+                                 </Typography>
                            
                             {/* Lagos hotels*/}
                             <div className={classes.root}>
                                 <ClickAwayListener onClickAway={this.handleClickAway}>
                                   <div>
-                                     <Button color="link" onClick={this.handleClick} style={{textDecoration: 'none', padding: '10px 10px 10px 0', color: '#000', borderBottom: '2px solid #ef5635', width: '200px', textAlign: 'center', marginBottom: 'auto' }}>Lagos Hotels<span style={{marginTop: 'auto'}}><MaterialIcon icon="keyboard_arrow_down" color='grey' size={35}/></span></Button>
+                                     <Button color="inherit" onClick={this.handleClick} style={{textDecoration: 'none', padding: '10px 10px 10px 0', color: '#000', borderBottom: '2px solid #ef5635', width: '200px', textAlign: 'center', marginBottom: 'auto' }}>Lagos Hotels<span style={{marginTop: 'auto'}}><MaterialIcon icon="keyboard_arrow_down" color='grey' size={35}/></span></Button>
                                        {open ? (
-                                            <Row style={{color: 'black'}}>
+                                            <Row style={{color: 'black', alignItems: 'center'}}>
                                                 <Col md="6">
-                                                      <ul style={{textAlign: 'left'}} className={classes.Links}>
+                                                      <ul style={{textAlign: 'left', marginLeft: '100px'}} className={classes.Links}>
                                                         <li className="list-unstyled">
                                                          Double M Exquisite Suites And Lounge
                                                         </li>
@@ -163,7 +168,7 @@ class Content extends Component{
                                                       </ul>
                                                  </Col>
                                                  <Col md="6">
-                                                      <ul style={{textAlign: 'left'}} className={classes.Links}>
+                                                      <ul style={{textAlign: 'left', marginLeft: '100px'}} className={classes.Links}>
                                                         <li className="list-unstyled">
                                                          ₦20,000.00 +
                                                         </li>
@@ -191,43 +196,7 @@ class Content extends Component{
                                 </div>
                             
                              {/* Lagos hotels*/}
-                            {/*<div className={classes.root}>
-                                <ClickAwayListener onClickAway={this.handleClickAway}>
-                                  <div>
-                                     <Button color="link" onClick={this.handleClick} style={{textDecoration: 'none', padding: '10px 10px 10px 0', color: '#000', borderBottom: '2px solid #ef5635', width: '200px', textAlign: 'center', marginBottom: 'auto' }}>Lagos Hotels<span style={{marginTop: 'auto'}}><MaterialIcon icon="keyboard_arrow_down" color='grey' size={35}/></span></Button>
-                                       {open ? (
-                                            <Row style={{color: 'black'}}>
-                                                <Col md="6">
-                                                      <ul className={classes.Links}>
-                                                        <li className="list-unstyled">
-                                                         Sheraton Hotel
-                                                        </li>
-                                                        <li className="list-unstyled">
-                                                          Victoria Hotel
-                                                        </li>
-                                                        <li className="list-unstyled">
-                                                          Redemption
-                                                        </li>
-                                                      </ul>
-                                                 </Col>
-                                                 <Col md="6">
-                                                      <ul className={classes.Links}>
-                                                        <li className="list-unstyled">
-                                                         ₦25,000.00 +
-                                                        </li>
-                                                        <li className="list-unstyled">
-                                                         ₦25,000.00 +
-                                                        </li>
-                                                        <li className="list-unstyled">
-                                                          ₦25,000.00 +
-                                                        </li>
-                                                      </ul>
-                                                 </Col>
-                                            </Row>
-                                         ) : null}
-                                        </div>
-                                    </ClickAwayListener>
-                                </div>*/}
+                            <AbujaHotels />
                              </Paper>
                           </Grid>
                          </Grid> 
