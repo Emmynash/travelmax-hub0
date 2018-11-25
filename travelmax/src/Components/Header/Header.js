@@ -44,19 +44,11 @@ export default class Header extends React.Component {
   };
   
   render() {
-    
-  //   const Style = {
-  //   content: {
-  //     backgroundColor: 'grey', 
-  //     position: 'fixed'
-  //   }
-  // };
-  
-  
+ 
     return (
       <div style={{height: '100px', marginTop: '-35px'}}>
         <Navbar style={{marginBottom: '-50px'}} color="dark"  dark expand="md">
-          <NavbarBrand href="/"><img src={logo} height='100' width='100' alt="Travelmax logo" name="Travelmax logo" /></NavbarBrand>
+          <NavbarBrand href="/"><img src={logo} height='100'  width='100' alt="Travelemaxhub logo" name="Travelemaxhub logo" /></NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>

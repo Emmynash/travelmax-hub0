@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -9,6 +9,12 @@ import Button from '@material-ui/core/Button';
 import image from '../../../Assets/Images/home1.jpg';
 import content from './search.css';
 
+import DatePicker from "react-datepicker";
+import moment from "moment";
+import "react-datepicker/dist/react-datepicker.css";
+
+import Datepicker from './DatePicker/DatePicker';
+
 
 const styles = theme => ({
   root: {
@@ -18,9 +24,7 @@ const styles = theme => ({
     backgroundImage: `url(${image})`,
    
   },
-  grow: {
-    flexGrow: 4,
-  },
+  
  
   title: {
     display: 'none',
@@ -44,15 +48,7 @@ const styles = theme => ({
     
     alignItems: 'center',
   },
-  searchIcon: {
-    width: theme.spacing.unit * 9,
-    height: '100%',
-    position: 'absolute',
-    pointerEvents: 'none',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+ 
   inputRoot: {
     color: 'inherit',
     width: '100%',
@@ -63,7 +59,7 @@ const styles = theme => ({
     paddingBottom: theme.spacing.unit,
     paddingLeft: theme.spacing.unit * 3,
     transition: theme.transitions.create('width'),
-    width: '100%',
+    width: '60%',
     [theme.breakpoints.up('sm')]: {
       width: 120,
       '&:focus': {
@@ -73,27 +69,38 @@ const styles = theme => ({
   },
 });
 
-const backImage = {
- bk:{
-   backgroundImage: `url(${image})`,
-   height: '200px', 
-   width: '100%',
-   backgroundSize: 'cover',
-   overflow: 'hidden',
-   backgroundRepeat: 'no-repeat'
- }
-};
-const Search = (props) =>{
-    const{classes} = props;
+
+class Search extends Component{
+  constructor(props) {
+    super(props);
+    this.state = {
+      startDate: moment(),
+      isOpen: false
+    };
+    this.handleChange = this.handleChange.bind(this);
+    this.toggleCalendar = this.toggleCalendar.bind(this);
+  }
+ 
+  handleChange (date) {
+  this.setState({startDate: date});
+  this.toggleCalendar();
+}
+
+toggleCalendar (e) {
+  e && e.preventDefault();
+  this.setState({isOpen: !this.state.isOpen});
+}
+  
+  render(){
+    const{classes} = this.props;
     return(
          
     <div className={classes.root}>
-     <div className={backImage.bk}  position="relative" style={{ backgroundSize: 'cover', overflow: 'hidden', backgroundRepeat: 'no-repeat', backgroundImage: `url(require("../../../Assets/Images/home4.jpg"))`, height: '550px', width: '100%', flexFlow: 'column', position: 'relative',  display: 'flex', alignItems : 'center', justifyContent: 'space-between', padding: '180px 20px', marginTop:'30'}}>
+     <div position="relative" style={{ backgroundSize: 'cover', overflow: 'hidden', backgroundRepeat: 'no-repeat', backgroundImage: `url(require("../../../Assets/Images/home4.jpg"))`, height: '550px', width: '100%', flexFlow: 'column', position: 'relative',  display: 'flex', alignItems : 'center', justifyContent: 'space-between', padding: '180px 20px', marginTop:'30'}}>
      <h3>Search and Book Cheap Flights</h3>
-      <AppBar position="relative" style={{backgroundColor: '#e56c52',  position: 'relative',  display: 'flex', alignItems : 'center', justifyContent: 'space-between', padding: '10px', zIndex:500}}>
+      <AppBar position="relative" style={{backgroundColor: 'white',  position: 'relative',  display: 'flex', alignItems : 'center', justifyContent: 'space-between', padding: '10px', zIndex:500}}>
         <Toolbar className={content.content}>
-          <div className={classes.grow} />
-          <div className={classes.search}>
+          {/*<div className={classes.search}>
             <InputBase
               placeholder="From"
               style={{height: '38px'}}
@@ -103,7 +110,6 @@ const Search = (props) =>{
               }}
             />
           </div>
-          <div className={classes.grow} />
           <div className={classes.search} style={{marginLeft: '1px'}}>
             <InputBase
               placeholder="To"
@@ -114,32 +120,33 @@ const Search = (props) =>{
               }}
             />
           </div>
-           <div className={classes.grow} />
           <div className={classes.search} style={{marginLeft: '1px', textAlign: 'left'}}>
-            <InputBase
-              placeholder="Depart"
+            <Button
+            classes={{
+                root: classes.inputRoot,
+                input: classes.inputInput,
+              }}
+              placeholder="Check-in"
               style={{height: '38px', width: '120px',  textAlign: 'left'}}
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-            />
+              className="example-custom-input"
+              onClick={this.toggleCalendar}>
+              {this.state.startDate.format("DD-MM-YYYY")}
+            </Button>
+            {
+              this.state.isOpen && (
+                  <DatePicker
+                      selected={this.state.startDate}
+                      onChange={this.handleChange}
+                      withPortal
+                      inline />
+                  )
+              }
+           
           </div>
-           <div className={classes.grow} />
-          <div className={classes.search} style={{marginLeft: '1px', textAlign: 'left'}}>
-            <InputBase
-              placeholder="Return"
-              style={{height: '38px', width: '120px', textAlign: 'left', justifyContent: 'left'}}
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-            />
-          </div>
-           <div className={classes.grow} />
+          <Datepicker />
           <div className={classes.search} style={{marginLeft: '1px'}}>
             <InputBase
-              placeholder="class & Travellers"
+              placeholder="Travellers"
               style={{height: '38px'}}
               classes={{
                 root: classes.inputRoot,
@@ -149,14 +156,21 @@ const Search = (props) =>{
           </div>
           
           
-          <Button variant="outlined" href="#" >Search</Button>
+          <Button variant="outlined" href="#" >Search</Button>title="flights_Search"*/}
+      <iframe scrolling="yes" title="flights_Search" width="849" height="217" frameborder="0" src="//www.travelpayouts.com/widgets/0634d95710ca734cd07698c44bbb9df6.html?v=1553"></iframe>
+        {/*<iframe id='travelstartIframe-fef87017-a0b0-4fa6-a0b1-392f1bf73b38' 
+          frameBorder='0' 
+          scrolling='no' 
+          style={{margin: '0px', padding: '0px', border: '0px', height: '0px', backgroundColor: '#fafafa'}}>
+        </iframe> */}
         </Toolbar>
       </AppBar>
     </div>
   </div>
        
         );
-};
+  }
+}
 
 Search.propTypes = {
   classes: PropTypes.object.isRequired,

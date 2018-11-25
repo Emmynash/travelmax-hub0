@@ -76,9 +76,9 @@ class Content extends Component{
                                 <Paper className={classes.paper}>
                                 <MaterialIcon icon="hotel" color='grey' size={60}/>
                                      <Typography variant="h4" gutterBottom>
-                                        Travelmax: Global hotels Search
+                                        Travelemaxhub: Global hotels Search
                                      </Typography>
-                                                              Travelmax hotel search allows users to compare hotel prices in just a few clicks. Travelers regularly use the hotel comparison to compare deals in the same city. Get information for trips to cities like Cape Town or Nairobi and you can find the right hotel on travelmax quickly and easily. Lagos City and its surrounding area are great for trips that are a week or longer with numerous hotels available
+                                                              Travelemaxhub hotel search allows users to compare hotel prices in just a few clicks. Travelers regularly use the hotel comparison to compare deals in the same city. Get information for trips to cities like Cape Town or Nairobi and you can find the right hotel on Travelemaxhub quickly and easily. Lagos City and its surrounding area are great for trips that are a week or longer with numerous hotels available
                                 </Paper>
                          </Grid> 
                   </Grid> 
@@ -130,9 +130,9 @@ class Content extends Component{
                             <Paper className={classes.paper}>
                             <MaterialIcon icon="find_in_page" color='grey' size={60}/>
                                  <Typography variant="h4" gutterBottom>
-                                    Find Cheap and Available Hotels on Travelmax
+                                    Find Cheap and Available Hotels on Travelemaxhub
                                  </Typography>
-                                                            With Travelmax you can easily find your ideal hotel and compare prices from different website. Simply enter where you want to go and your desired travel dates, and let our hotel search engine compare accommodation prices for you. To refine your search results, simply filter by price, distance (e.g. from the beach), star category, facilities and more. From budget hostels to luxury suites, travelmax makes it easy to book online. You can search from a large variety of rooms and locations across the Africa, like Durban and Johannesburg to popular cities and holiday destinations abroad!
+                                                            With Travelemaxhub you can easily find your ideal hotel and compare prices from different website. Simply enter where you want to go and your desired travel dates, and let our hotel search engine compare accommodation prices for you. To refine your search results, simply filter by price, distance (e.g. from the beach), star category, facilities and more. From budget hostels to luxury suites, Travelemaxhub makes it easy to book online. You can search from a large variety of rooms and locations across the Africa, like Durban and Johannesburg to popular cities and holiday destinations abroad!
                             </Paper>
                         </Grid> 
                       </Grid>

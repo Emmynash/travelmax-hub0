@@ -10,9 +10,9 @@ return (
           <Container fluid className="text-center text-md-left">
             <Row>
               <Col md="5">
-              <h5 className="title">Travelmax</h5>
+              <h5 className="title">Travelemaxhub</h5>
               <p>
-              Travelemax is one of the leader in online travel and related services, and care about your comfort + pleasure. All documents belongs to travelmax. All Right Reserved
+              Travelemaxhub is one of the leader in online travel and related services, and care about your comfort + pleasure. All documents belongs to Travelemaxhub. All Right Reserved
               </p>
               </Col>
                
@@ -31,7 +31,7 @@ return (
               </ul>
               </Col>
              <Col md="3">
-             <h5 style={{marginLeft:'30px'}} className="title">Links</h5>
+             <h5 style={{marginLeft:'50px'}} className="title">Links</h5>
               <ul style={{color: '#ef5635'}}>
                 <li style={{color: '#ef5635'}} className="list-unstyled">
                   <a href="/">Terms & Condition</a>
@@ -49,7 +49,7 @@ return (
           <div className="footer-copyright text-center py-3">
             <Container fluid>
               &copy; {new Date().getFullYear()} Copyright:{" "}
-              <a href="/"> infinitysystems.com</a>
+              <a href="/"> travelmaxhub.com</a>
             </Container>
           </div>
         </Footer>

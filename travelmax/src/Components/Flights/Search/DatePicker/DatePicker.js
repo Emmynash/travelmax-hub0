@@ -1,28 +1,18 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import InputBase from '@material-ui/core/InputBase';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import image from '../../../Assets/Images/Hotel_2.jpg';
-import content from './search.css';
 
 import DatePicker from "react-datepicker";
 import moment from "moment";
 import "react-datepicker/dist/react-datepicker.css";
-
-import Datepicker from './DatePicker/DatePicker';
 
 
 const styles = theme => ({
   root: {
     width: '100%',
     color: 'grey',
-    // backgroundColor: 'grey',
-    backgroundImage: `url(${image})`,
-   
   },
   
  
@@ -69,8 +59,7 @@ const styles = theme => ({
   },
 });
 
-
-class Search extends Component{
+class Datepicker extends Component{
   constructor(props) {
     super(props);
     this.state = {
@@ -94,23 +83,7 @@ toggleCalendar (e) {
   render(){
     const{classes} = this.props;
     return(
-         
-    <div className={classes.root}>
-     <div position="relative" style={{ backgroundSize: 'cover', overflow: 'hidden', backgroundRepeat: 'no-repeat', backgroundImage: `url(require("../../../Assets/Images/home4.jpg"))`, height: '550px', width: '100%', flexFlow: 'column', position: 'relative',  display: 'flex', alignItems : 'center', justifyContent: 'space-between', padding: '180px 20px', marginTop:'30'}}>
-     <h3 style={{color: '#eee'}}>Find hotels, apartments and more...</h3>
-      <AppBar position="relative" style={{backgroundColor: 'transparent', position: 'relative',  display: 'flex', alignItems : 'center', justifyContent: 'space-between', padding: '10px', zIndex:500}}>
-        <Toolbar className={content.content}>
-          {/*<div className={classes.search}>
-            <InputBase
-              placeholder="Where are you going?"
-              style={{height: '38px'}}
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-            />
-          </div>
-          <div className={classes.search} style={{marginLeft: '1px', textAlign: 'left'}}>
+        <div className={classes.search} style={{marginLeft: '1px', textAlign: 'left'}}>
             <Button
             classes={{
                 root: classes.inputRoot,
@@ -133,33 +106,14 @@ toggleCalendar (e) {
               }
            
           </div>
-          <Datepicker />
-          {/*<div className={classes.search} style={{marginLeft: '1px', textAlign: 'left'}}>
-            <InputBase
-              placeholder="Adult. Children"
-              style={{height: '38px', width: '120px', textAlign: 'left', justifyContent: 'left'}}
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-            />
-          </div>
-           
-          <Button variant="outlined" href="#" >Search</Button>*/}
-          <iframe scrolling="no" title="hotels_search" width="849" height="217" frameborder="0" src="//www.travelpayouts.com/widgets/0634d95710ca734cd07698c44bbb9df6.html?v=1553"></iframe>
-        </Toolbar>
-      </AppBar>
-    </div>
-  </div>
-       
-        );
+          );
     }
+    
 }
-
-Search.propTypes = {
+Datepicker.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
 
-export default withStyles(styles) (Search);
+export default withStyles(styles) (Datepicker);
 
