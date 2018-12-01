@@ -1,6 +1,6 @@
-import Axios from 'Axios';
+import axios from 'axios';
 
-const instance = Axios.create({
+const instance = axios.create({
     baseURL:  'https://travelmaxhub-c9bda.firebaseio.com/'
 });
 

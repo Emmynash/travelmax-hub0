@@ -2,18 +2,20 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import InputBase from '@material-ui/core/InputBase';
-import { fade } from '@material-ui/core/styles/colorManipulator';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import image from '../../../Assets/Images/home1.jpg';
 import content from './search.css';
+import RegisterModal from '../../UI/Modal/Register/Register';
 
-import DatePicker from "react-datepicker";
 import moment from "moment";
 import "react-datepicker/dist/react-datepicker.css";
+import { fade } from '@material-ui/core/styles/colorManipulator';
 
-import Datepicker from './DatePicker/DatePicker';
+// import Datepicker from './DatePicker/DatePicker';
+// import DatePicker from "react-datepicker";
+// import InputBase from '@material-ui/core/InputBase';
+
 
 
 const styles = theme => ({
@@ -75,13 +77,13 @@ class Search extends Component{
     super(props);
     this.state = {
       startDate: moment(),
-      isOpen: false
+      isOpen: false,
     };
     this.handleChange = this.handleChange.bind(this);
     this.toggleCalendar = this.toggleCalendar.bind(this);
   }
- 
-  handleChange (date) {
+
+handleChange (date) {
   this.setState({startDate: date});
   this.toggleCalendar();
 }
@@ -90,15 +92,17 @@ toggleCalendar (e) {
   e && e.preventDefault();
   this.setState({isOpen: !this.state.isOpen});
 }
-  
+
+
   render(){
     const{classes} = this.props;
     return(
          
     <div className={classes.root}>
      <div position="relative" style={{ backgroundSize: 'cover', overflow: 'hidden', backgroundRepeat: 'no-repeat', backgroundImage: `url(require("../../../Assets/Images/home4.jpg"))`, height: '550px', width: '100%', flexFlow: 'column', position: 'relative',  display: 'flex', alignItems : 'center', justifyContent: 'space-between', padding: '180px 20px', marginTop:'30'}}>
-     <h3>Search and Book Cheap Flights</h3>
-      <AppBar position="relative" style={{backgroundColor: 'white',  position: 'relative',  display: 'flex', alignItems : 'center', justifyContent: 'space-between', padding: '10px', zIndex:500}}>
+     <h2 style={{color: '#443b3b'}}>Search, Compare and Book Cheap Flights</h2>
+     <h4 style={{alignItems: 'center', textAlign: 'center', color: '#443b3b'}}>Subscribe to one of our packages today, experience the blue wings and tell the difference</h4>
+      <AppBar position="relative" style={{backgroundColor: 'transparent',  position: 'relative',  display: 'flex', alignItems : 'center', justifyContent: 'space-between', padding: '10px', zIndex:500}}>
         <Toolbar className={content.content}>
           {/*<div className={classes.search}>
             <InputBase
@@ -157,12 +161,20 @@ toggleCalendar (e) {
           
           
           <Button variant="outlined" href="#" >Search</Button>title="flights_Search"*/}
-      <iframe scrolling="yes" title="flights_Search" width="849" height="217" frameborder="0" src="//www.travelpayouts.com/widgets/0634d95710ca734cd07698c44bbb9df6.html?v=1553"></iframe>
+     
         {/*<iframe id='travelstartIframe-fef87017-a0b0-4fa6-a0b1-392f1bf73b38' 
           frameBorder='0' 
           scrolling='no' 
           style={{margin: '0px', padding: '0px', border: '0px', height: '0px', backgroundColor: '#fafafa'}}>
         </iframe> */}
+        
+        <Button variant="contained" 
+        href="#"
+        style={{color: '#ef5635'}}
+        >
+        <RegisterModal />
+        </Button>
+        
         </Toolbar>
       </AppBar>
     </div>

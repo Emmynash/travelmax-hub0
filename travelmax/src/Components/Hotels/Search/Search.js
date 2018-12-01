@@ -2,18 +2,19 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import InputBase from '@material-ui/core/InputBase';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import RegisterModal from '../../UI/Modal/Register/Register';
 import image from '../../../Assets/Images/Hotel_2.jpg';
 import content from './search.css';
 
-import DatePicker from "react-datepicker";
 import moment from "moment";
 import "react-datepicker/dist/react-datepicker.css";
 
-import Datepicker from './DatePicker/DatePicker';
+// import Datepicker from './DatePicker/DatePicker';
+// import InputBase from '@material-ui/core/InputBase';
+// import DatePicker from "react-datepicker";
 
 
 const styles = theme => ({
@@ -97,7 +98,8 @@ toggleCalendar (e) {
          
     <div className={classes.root}>
      <div position="relative" style={{ backgroundSize: 'cover', overflow: 'hidden', backgroundRepeat: 'no-repeat', backgroundImage: `url(require("../../../Assets/Images/home4.jpg"))`, height: '550px', width: '100%', flexFlow: 'column', position: 'relative',  display: 'flex', alignItems : 'center', justifyContent: 'space-between', padding: '180px 20px', marginTop:'30'}}>
-     <h3 style={{color: '#eee'}}>Find hotels, apartments and more...</h3>
+     <h2 style={{color: '#eee'}}>Find hotels, apartments and more...</h2>
+     <h4 style={{alignItems: 'center', textAlign: 'center', color: '#eee'}}>Plan a dream vacation and book a room with <span style={{color: "#ef5635"}}>travelmaxhub</span>, our  presence ensures that you will find affordable accommodations wherever your journey takes you.</h4>
       <AppBar position="relative" style={{backgroundColor: 'transparent', position: 'relative',  display: 'flex', alignItems : 'center', justifyContent: 'space-between', padding: '10px', zIndex:500}}>
         <Toolbar className={content.content}>
           {/*<div className={classes.search}>
@@ -146,7 +148,12 @@ toggleCalendar (e) {
           </div>
            
           <Button variant="outlined" href="#" >Search</Button>*/}
-          <iframe scrolling="no" title="hotels_search" width="849" height="217" frameborder="0" src="//www.travelpayouts.com/widgets/0634d95710ca734cd07698c44bbb9df6.html?v=1553"></iframe>
+       <Button variant="contained" 
+        href="#"
+        style={{color: '#ef5635'}}
+        >
+        <RegisterModal />
+        </Button>
         </Toolbar>
       </AppBar>
     </div>
