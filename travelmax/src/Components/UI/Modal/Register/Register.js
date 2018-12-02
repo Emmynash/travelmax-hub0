@@ -13,7 +13,7 @@ class RegisterModal extends React.Component {
     this.validator = new SimpleReactValidator();
     this.state = {
       modal: false,
-      loading: true,
+      loading: false,
       userform: {
           title: 'Mr.',
           firstname: '',
@@ -53,6 +53,7 @@ class RegisterModal extends React.Component {
   
   submitFormHandler(event){
     event.preventDefault();
+    this.setState({loading: true});
     if( this.validator.allValid() ){
       const formData = {};
       for(let inputIdentity in this.state.userform){
@@ -86,7 +87,7 @@ class RegisterModal extends React.Component {
     const { userform } = this.state;
     
     let form = (
-      <Form onSubmit={this.submitFormHandler}>
+           <Form onSubmit={this.submitFormHandler}>
                 <FormGroup>
                   <Label for="gender">Title</Label>
                   <Input type="select" name="title" value={userform.title} onChange={this.userFormHandler} id="title" placeholder="Title">
