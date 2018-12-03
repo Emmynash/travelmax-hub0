@@ -6,7 +6,7 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import MaterialIcon from 'material-icons-react';
 import grid from './Content.css';
-import ImageGallery from '../../ImageSlide/ImageSlide';
+import ImageGallery from '../ImageSlide/ImageSlide';
 import RegisterModal from '../../UI/Modal/Register/Register';
 import Aux from '../../../HOC/Aux/Aux';
 

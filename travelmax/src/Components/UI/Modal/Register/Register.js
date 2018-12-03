@@ -5,25 +5,34 @@ import axios from '../../../../Axios-users';
 import LoginModal from '../Login/loginModal';
 import { withRouter } from 'react-router-dom';
 import Spinner from '../Spinner/Spinner';
+import { withFirebase } from '../../../Firebase';
+// import { compose } from 'recompose'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter,  Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+
+// const InitRegisterUser = {
+//   email: '',
+//   password: ''
+// };
 
 class RegisterModal extends React.Component {
   constructor(props) {
     super(props);
     this.validator = new SimpleReactValidator();
     this.state = {
+      InitRegisterUser: {
+        email: '',
+        password: ''
+      },
       modal: false,
       loading: false,
       userform: {
           title: 'Mr.',
           firstname: '',
           lastname:  '',
-          email:  '',
           phone:  '',
-          password:  '',
-          accepted: true
+          accepted: true,
+          error: null,
       },
-      
     };
 
     this.toggle = this.toggle.bind(this);
@@ -41,20 +50,25 @@ class RegisterModal extends React.Component {
         const target = event.target;
         const name = target.name;
         const value = target.type === 'checkbox' ? target.checked : target.value;
-        const { userform } = this.state;
+        const { userform, InitRegisterUser } = this.state;
         this.setState({
             userform: {
                 ...userform,
                 [name]: value
+            },
+            InitRegisterUser: {
+              ...InitRegisterUser,
+              [name]: value
             }
         });
     console.log(event.target.value);
   }
   
+ 
   submitFormHandler(event){
     event.preventDefault();
-    this.setState({loading: true});
     if( this.validator.allValid() ){
+      this.setState({loading: true});
       const formData = {};
       for(let inputIdentity in this.state.userform){
         formData[inputIdentity] = this.state.userform[inputIdentity];
@@ -63,21 +77,48 @@ class RegisterModal extends React.Component {
         userData: formData
       };
       
+      const {email, password} = this.state.InitRegisterUser;
+        this.props.firebase.doCreateUserWithEmailAndPassword(email, password)
+        .then(authUser =>{
+          this.setState({
+            ...this.state.InitRegisterUser,
+            loading: false,
+             ...this.state.userform,
+             modal: false
+          });
+          this.props.history.push({pathname: '/flights/search'});
+        })
+        .catch(error =>{
+          this.setState({
+            ...this.state.InitRegisterUser,
+            ...this.state.userform,
+            userform: {error: error},
+            loading: false,
+            modal: true
+          });
+          console.log(error);
+        });
+        
     axios.post('/user.json', user)
-         .then(response => {
-           this.setState({
-             loading: false
-           });
-           console.log(response);
-           this.props.history.push({pathname: '/flights/search'});
-         })
-         .then(error => {
-           this.setState({
-             loading: false
-           });
-           console.log(error);
-         });
-      // alert('Form submitted successfully!');
+        .then(response => {
+          this.setState({
+            loading: false,
+            ...this.state.InitRegisterUser,
+            ...this.state.userform,
+            modal: false
+          });
+          console.log(response);
+        })
+        .catch(error => {
+          this.setState({
+            loading: false,
+            modal: true,
+            ...this.state.userform
+          });
+          console.log(error);
+        });
+   
+    
     } else {
       this.validator.showMessages();
       this.forceUpdate();
@@ -85,6 +126,7 @@ class RegisterModal extends React.Component {
   }
   render() {
     const { userform } = this.state;
+    const { InitRegisterUser } = this.state;
     
     let form = (
            <Form onSubmit={this.submitFormHandler}>
@@ -106,8 +148,9 @@ class RegisterModal extends React.Component {
                 </FormGroup>
                 <FormGroup>
                   <Label for="email">Email</Label>
-                  <Input name="email" type="text" value={userform.email}  onChange={this.userFormHandler} id="email" placeholder="Email" />
-                   <span style={{color:'red'}}>{this.validator.message('email', userform.email, 'required|email|regex')}</span>
+                  <Input name="email" type="text" value={InitRegisterUser.email}  onChange={this.userFormHandler} id="email" placeholder="Email" />
+                   <span style={{color:'red'}}>{this.validator.message('email', InitRegisterUser.email, 'required|email|regex')}</span>
+                   <span style={{color:'red'}}>{userform.error && <p>{userform.error.message}</p>}</span>
                 </FormGroup>
                 <FormGroup>
                   <Label for="phone">Phone Number</Label>
@@ -116,8 +159,8 @@ class RegisterModal extends React.Component {
                 </FormGroup>
                 <FormGroup>
                   <Label for="Password">Password</Label>
-                  <Input type="password" name="password" value={userform.password} onChange={this.userFormHandler} id="Password" placeholder="Password" />
-                  <span style={{color:'red'}}>{this.validator.message('password', userform.password, 'required|min:7')}</span>
+                  <Input type="password" name="password" value={InitRegisterUser.password} onChange={this.userFormHandler} id="Password" placeholder="Password" />
+                  <span style={{color:'red'}}>{this.validator.message('password', InitRegisterUser.password, 'required|min:7')}</span>
                 </FormGroup>
                 <FormGroup>
                   <Input style={{marginLeft: "5px"}} type="checkbox" defaultChecked={userform.accepted} name="accepted" id="accepted" onChange={this.userCheckHandler} />
@@ -152,4 +195,4 @@ class RegisterModal extends React.Component {
   }
 }
 
-export default (withRouter(RegisterModal));
+export default (withRouter(withFirebase(RegisterModal)));
