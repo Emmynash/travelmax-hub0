@@ -86,7 +86,7 @@ class RegisterModal extends React.Component {
              ...this.state.userform,
              modal: false
           });
-          this.props.history.push({pathname: '/flights/search'});
+          this.props.history.push({pathname: '/search'});
         })
         .catch(error =>{
           this.setState({

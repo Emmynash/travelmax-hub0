@@ -1,21 +1,19 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import RegisterModal from '../Register/Register';
 import SimpleReactValidator from 'simple-react-validator';
 import { withRouter } from 'react-router-dom';
-import Spinner from '../Spinner/Spinner';
-import { withFirebase } from '../../../Firebase';
-import PasswordForget from '../../../PasswordForget'
+import Spinner from '../UI/Modal/Spinner/Spinner';
+import { withFirebase } from '../Firebase';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter,  Form, FormGroup, Label, Input } from 'reactstrap';
 
-class LoginModal extends React.Component {
+class PasswordUpdate extends React.Component {
   constructor(props) {
     super(props);
     this.validator = new SimpleReactValidator();
     this.state = {
       InitRegisterUser: {
-        email: '',
-        password: '',
+        passwordOne: '',
+        passwordTwo: '',
         error: null
       },
       modal: false
@@ -45,15 +43,15 @@ class LoginModal extends React.Component {
     if( this.validator.allValid() ){
       this.setState({loading: true});
       
-      const {email, password} = this.state.InitRegisterUser;
-        this.props.firebase.doSignInWithEmailAndPassword(email, password)
-        .then(authUser =>{
+      const {passwordOne} = this.state.InitRegisterUser;
+        this.props.firebase.doPasswordUpdate(passwordOne)
+        .then(() =>{
           this.setState({
             ...this.state.InitRegisterUser,
             loading: false,
              modal: false
           });
-          this.props.history.push({pathname: '/search'});
+          this.props.history.push({pathname: '/'});
         })
         .catch(error =>{
           this.setState({
@@ -78,34 +76,35 @@ class LoginModal extends React.Component {
 
   render() {
     const { InitRegisterUser } = this.state;
+    
+    const isInvalid = InitRegisterUser.passwordOne !== InitRegisterUser.passwordTwo || InitRegisterUser.passwordOne === '';
+    
     let form = <Form onSubmit={this.submitFormHandler}>
                 <span style={{color:'red'}}>{InitRegisterUser.error && <p>{InitRegisterUser.error.message}</p>}</span>
                 <FormGroup>
-                  <Label for="email">Email</Label>
-                  <Input name="email" type="text" value={InitRegisterUser.email}  onChange={this.userFormHandler} id="email" placeholder="Email" />
-                   <span style={{color:'red'}}>{this.validator.message('email', InitRegisterUser.email, 'required|email|regex')}</span>
+                  <Label for="passwordOne">Password</Label>
+                  <Input name="passwordOne" type="password" value={InitRegisterUser.passwordOne}  onChange={this.userFormHandler} id="passwordOne" placeholder="Password" />
+                   <span style={{color:'red'}}>{this.validator.message('password', InitRegisterUser.passwordOne, 'required')}</span>
                 </FormGroup>
                 <FormGroup>
-                  <Label for="Password">Password</Label>
-                  <Input type="password" name="password" value={InitRegisterUser.password} onChange={this.userFormHandler} id="Password" placeholder="Password" />
-                  <span style={{color:'red'}}>{this.validator.message('password', InitRegisterUser.password, 'required|min:7')}</span>
+                  <Label for="passwordTwo">Retype Password</Label>
+                  <Input name="passwordTwo" type="password" value={InitRegisterUser.passwordTwo}  onChange={this.userFormHandler} id="passwordTwo" placeholder="Retype Password" />
+                   <span style={{color:'red'}}>{this.validator.message('Second password', InitRegisterUser.passwordTwo, 'required')}</span>
                 </FormGroup>
-                <Button color="primary">Sign in</Button>
+                <Button disabled={isInvalid} color="primary">Reset my password</Button>
             </Form>;
     if(this.state.loading){
       form = <Spinner />;
     }
     return (
       <div>
-        <Button color="link" style={{color: '#ef5635', textDecoration: 'none'}} onClick={this.toggle}>Login</Button>
+        <Button outline color="secondary" style={{color: '#ef5635', textDecoration: 'none'}} onClick={this.toggle}>Reset Pass</Button>
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-          <ModalHeader toggle={this.toggle} style={{color:"#ef5635"}}>Please Login!</ModalHeader>
+          <ModalHeader toggle={this.toggle} style={{color:"#000"}}>Reset your current password. <br /><span style={{color:"#ef5635"}}> If password fields don't match, button will not be disabled</span></ModalHeader>
           <ModalBody>
            {form}
-           <PasswordForget />
           </ModalBody>
           <ModalFooter>
-            <div><span>Don't have an account yet? <RegisterModal /></span></div>
             <Button color="secondary" onClick={this.toggle}>Cancel</Button>
           </ModalFooter>
         </Modal>
@@ -114,4 +113,4 @@ class LoginModal extends React.Component {
   }
 }
 
-export default (withRouter(withFirebase(LoginModal)));
+export default (withRouter(withFirebase(PasswordUpdate)));

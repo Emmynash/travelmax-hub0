@@ -8,6 +8,8 @@ import MaterialIcon from 'material-icons-react';
 import grid from './Content.css';
 import ImageGallery from '../ImageSlide/ImageSlide';
 import RegisterModal from '../../UI/Modal/Register/Register';
+import { AuthUserContext } from '../../Sessions';
+import { Button } from 'reactstrap';
 import Aux from '../../../HOC/Aux/Aux';
 
 const styles = theme => ({
@@ -65,9 +67,13 @@ class Content extends Component{
                               ₦35, 000.00 ($150.00)
                          </Typography>
                              A startup purchase of the BONZE PACKAGE with just a fee of ₦35,000 or $ 150 and recruiting 
-                             3 more travel accounts will earn you enough points to travel for your local vacations (your choice destination) within Nigeria.
+                             3 more travel accounts will earn you enough points to travel for your local vacations (your choice destination) within Nigeria.<br />
                           <span style={{color:"#ef5635"}} className={classes.button}>
-                            <RegisterModal />
+                            <AuthUserContext.Consumer>
+                                  {authUser =>
+                                    authUser ? <Button outline color="secondary">Subscribe</Button> :  <RegisterModal />
+                                  }
+                            </AuthUserContext.Consumer>
                           </span>
                           </Paper>
                         </Grid>
@@ -79,9 +85,13 @@ class Content extends Component{
                                  ₦75, 000.00 ($250.00)
                              </Typography>
                                  A startup purchase of the SILVER PACKAGE with just a fee of ₦75,000 or $250 and recruiting 
-                                 3 more travel accounts will earn you enough points to travel to the destination of your choice in any country within the African continent. 
+                                 3 more travel accounts will earn you enough points to travel to the destination of your choice in any country within the African continent. <br />
                              <span style={{color:"#ef5635"}} className={classes.button}>
-                                <RegisterModal />
+                               <AuthUserContext.Consumer>
+                                  {authUser =>
+                                    authUser ? <Button outline color="secondary">Subscribe</Button> :  <RegisterModal />
+                                  }
+                               </AuthUserContext.Consumer>
                             </span>
                             </Paper>
                         </Grid>
@@ -93,9 +103,13 @@ class Content extends Component{
                                  ₦115, 000.00 ($350.00)
                              </Typography>
                                   a startup purchase of the Gold PACKAGE with a fee of just ₦115,000.00 or $ 350.00 and recruiting 
-                                  3 more travel accounts will earn you enough points to travel to the destination of your choice within Emirates and Asia 
+                                  3 more travel accounts will earn you enough points to travel to the destination of your choice within Emirates and Asia <br />
                             <span style={{color:"#ef5635"}} className={classes.button}>
-                                <RegisterModal />
+                                <AuthUserContext.Consumer>
+                                  {authUser =>
+                                    authUser ? <Button outline color="secondary">Subscribe</Button> :  <RegisterModal />
+                                  }
+                               </AuthUserContext.Consumer>
                             </span>
                             </Paper>
                         </Grid>
@@ -107,9 +121,13 @@ class Content extends Component{
                                  ₦150, 000.00 ($450.00)
                              </Typography>
                                  Purchase the Gold PACKAGE with just a fee of  ₦115, 000.00 or $350.00, recruit 
-                                 3 more travel accounts to earn enough points to travel to your choice destination within Emirates, Asia, USA, UK etc  
+                                 3 more travel accounts to earn enough points to travel to your choice destination within Emirates, Asia, USA, UK etc  <br />
                             <span style={{color:"#ef5635"}} className={classes.button}>
-                                <RegisterModal />
+                                <AuthUserContext.Consumer>
+                                  {authUser =>
+                                    authUser ? <Button outline color="secondary">Subscribe</Button> :  <RegisterModal />
+                                  }
+                               </AuthUserContext.Consumer>
                             </span>
                             </Paper>
                         </Grid>

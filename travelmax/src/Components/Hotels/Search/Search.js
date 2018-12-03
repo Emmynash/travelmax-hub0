@@ -6,6 +6,9 @@ import { fade } from '@material-ui/core/styles/colorManipulator';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import RegisterModal from '../../UI/Modal/Register/Register';
+import { AuthUserContext } from '../../Sessions';
+import { NavLink } from 'react-router-dom';
+
 import image from '../../../Assets/Images/Hotel_2.jpg';
 import content from './search.css';
 
@@ -152,7 +155,11 @@ toggleCalendar (e) {
         href="#"
         style={{color: '#ef5635'}}
         >
-        <RegisterModal />
+        <AuthUserContext.Consumer>
+          {authUser =>
+            authUser ? <NavLink  style={{color: '#ef5635', width: "60px", textDecoration: 'none'}} to='/search'>Search</NavLink> :  <RegisterModal />
+          }
+       </AuthUserContext.Consumer>
         </Button>
         </Toolbar>
       </AppBar>

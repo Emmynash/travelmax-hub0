@@ -1,21 +1,18 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import RegisterModal from '../Register/Register';
 import SimpleReactValidator from 'simple-react-validator';
 import { withRouter } from 'react-router-dom';
-import Spinner from '../Spinner/Spinner';
-import { withFirebase } from '../../../Firebase';
-import PasswordForget from '../../../PasswordForget'
+import Spinner from '../UI/Modal/Spinner/Spinner';
+import { withFirebase } from '../Firebase';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter,  Form, FormGroup, Label, Input } from 'reactstrap';
 
-class LoginModal extends React.Component {
+class PasswordReset extends React.Component {
   constructor(props) {
     super(props);
     this.validator = new SimpleReactValidator();
     this.state = {
       InitRegisterUser: {
         email: '',
-        password: '',
         error: null
       },
       modal: false
@@ -45,15 +42,15 @@ class LoginModal extends React.Component {
     if( this.validator.allValid() ){
       this.setState({loading: true});
       
-      const {email, password} = this.state.InitRegisterUser;
-        this.props.firebase.doSignInWithEmailAndPassword(email, password)
-        .then(authUser =>{
+      const {email} = this.state.InitRegisterUser;
+        this.props.firebase.doPasswordReset(email)
+        .then(() =>{
           this.setState({
             ...this.state.InitRegisterUser,
             loading: false,
              modal: false
           });
-          this.props.history.push({pathname: '/search'});
+          this.props.history.push({pathname: '/'});
         })
         .catch(error =>{
           this.setState({
@@ -85,27 +82,21 @@ class LoginModal extends React.Component {
                   <Input name="email" type="text" value={InitRegisterUser.email}  onChange={this.userFormHandler} id="email" placeholder="Email" />
                    <span style={{color:'red'}}>{this.validator.message('email', InitRegisterUser.email, 'required|email|regex')}</span>
                 </FormGroup>
-                <FormGroup>
-                  <Label for="Password">Password</Label>
-                  <Input type="password" name="password" value={InitRegisterUser.password} onChange={this.userFormHandler} id="Password" placeholder="Password" />
-                  <span style={{color:'red'}}>{this.validator.message('password', InitRegisterUser.password, 'required|min:7')}</span>
-                </FormGroup>
-                <Button color="primary">Sign in</Button>
+                <Button color="primary">Reset</Button>
             </Form>;
     if(this.state.loading){
       form = <Spinner />;
     }
     return (
       <div>
-        <Button color="link" style={{color: '#ef5635', textDecoration: 'none'}} onClick={this.toggle}>Login</Button>
+        <Button color="link" style={{color: '#ef5635', textDecoration: 'none'}} onClick={this.toggle}>Reset Password</Button>
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-          <ModalHeader toggle={this.toggle} style={{color:"#ef5635"}}>Please Login!</ModalHeader>
+          <ModalHeader toggle={this.toggle} style={{color:"#ef5635"}}>Type in your email, get a link to reset your password</ModalHeader>
           <ModalBody>
            {form}
-           <PasswordForget />
           </ModalBody>
           <ModalFooter>
-            <div><span>Don't have an account yet? <RegisterModal /></span></div>
+           
             <Button color="secondary" onClick={this.toggle}>Cancel</Button>
           </ModalFooter>
         </Modal>
@@ -114,4 +105,4 @@ class LoginModal extends React.Component {
   }
 }
 
-export default (withRouter(withFirebase(LoginModal)));
+export default (withRouter(withFirebase(PasswordReset)));

@@ -7,6 +7,8 @@ import Button from '@material-ui/core/Button';
 import image from '../../../Assets/Images/home1.jpg';
 import content from './search.css';
 import RegisterModal from '../../UI/Modal/Register/Register';
+import { AuthUserContext } from '../../Sessions';
+import { NavLink } from 'react-router-dom';
 
 import moment from "moment";
 import "react-datepicker/dist/react-datepicker.css";
@@ -172,7 +174,11 @@ toggleCalendar (e) {
         href="#"
         style={{color: '#ef5635'}}
         >
-        <RegisterModal />
+       <AuthUserContext.Consumer>
+          {authUser =>
+            authUser ? <NavLink  style={{color: '#ef5635', width: "60px", textDecoration: 'none'}} to='/search'>Search</NavLink> :  <RegisterModal />
+          }
+       </AuthUserContext.Consumer>
         </Button>
         
         </Toolbar>
