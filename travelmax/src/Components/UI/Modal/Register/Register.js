@@ -1,7 +1,6 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import SimpleReactValidator from 'simple-react-validator';
-import axios from '../../../../Axios-users';
 import LoginModal from '../Login/loginModal';
 import { withRouter } from 'react-router-dom';
 import Spinner from '../Spinner/Spinner';
@@ -9,12 +8,9 @@ import { withFirebase } from '../../../Firebase';
 // import { compose } from 'recompose'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter,  Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 
-// const InitRegisterUser = {
-//   email: '',
-//   password: ''
-// };
 
 class RegisterModal extends React.Component {
+   _isMounted = false;
   constructor(props) {
     super(props);
     this.validator = new SimpleReactValidator();
@@ -61,32 +57,42 @@ class RegisterModal extends React.Component {
               [name]: value
             }
         });
-    console.log(event.target.value);
+    // console.log(event.target.value);
   }
   
  
   submitFormHandler(event){
+     this._isMounted = true;
     event.preventDefault();
     if( this.validator.allValid() ){
       this.setState({loading: true});
-      const formData = {};
-      for(let inputIdentity in this.state.userform){
-        formData[inputIdentity] = this.state.userform[inputIdentity];
-      }
-      const user = {
-        userData: formData
-      };
-      
+      const {firstname, lastname, phone, title} = this.state.userform;
       const {email, password} = this.state.InitRegisterUser;
+      const actionCodeSettings = {
+        url: "https://travelmaxhub.com",
+        handleCodeInApp: true
+      };
         this.props.firebase.doCreateUserWithEmailAndPassword(email, password)
         .then(authUser =>{
+          // Create a user in your Firebase realtime database
+        return this.props.firebase
+          .user(authUser.user.uid)
+          .set({
+            title,
+            firstname,
+            lastname,
+            phone,
+            email,
+          });
+          })
+        .then(() => {
           this.setState({
             ...this.state.InitRegisterUser,
             loading: false,
              ...this.state.userform,
              modal: false
           });
-          this.props.history.push({pathname: '/search'});
+          this.props.history.push({pathname: '/'});
         })
         .catch(error =>{
           this.setState({
@@ -98,31 +104,24 @@ class RegisterModal extends React.Component {
           });
           console.log(error);
         });
-        
-    axios.post('/user.json', user)
-        .then(response => {
-          this.setState({
-            loading: false,
-            ...this.state.InitRegisterUser,
-            ...this.state.userform,
-            modal: false
-          });
-          console.log(response);
+       this.props.firebase.doVerifyEmailAddress(email, actionCodeSettings)
+        .then(authUser => {
+          window.localStorage.setItem('emailForSignIn', email);
+          
+          console.log(authUser);
         })
-        .catch(error => {
-          this.setState({
-            loading: false,
-            modal: true,
-            ...this.state.userform
-          });
+        .catch(error =>{
           console.log(error);
         });
-   
     
     } else {
       this.validator.showMessages();
       this.forceUpdate();
     }
+  }
+  
+  componentWillUnmount() {
+    this._isMounted = false;
   }
   render() {
     const { userform } = this.state;

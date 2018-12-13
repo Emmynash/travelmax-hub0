@@ -100,7 +100,7 @@ class PasswordUpdate extends React.Component {
       <div>
         <Button outline color="secondary" style={{color: '#ef5635', textDecoration: 'none'}} onClick={this.toggle}>Reset Pass</Button>
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-          <ModalHeader toggle={this.toggle} style={{color:"#000"}}>Reset your current password. <br /><span style={{color:"#ef5635"}}> If password fields don't match, button will not be disabled</span></ModalHeader>
+          <ModalHeader toggle={this.toggle} style={{color:"#000"}}>Reset your current password. <br /><span style={{color:"#ef5635"}}> If password fields don't match, button will not be enable</span></ModalHeader>
           <ModalBody>
            {form}
           </ModalBody>

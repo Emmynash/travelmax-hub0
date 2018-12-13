@@ -160,6 +160,9 @@ class NavigationAuth extends React.Component {
                   <NavLink color="link" style={{textDecoration: 'none', color: '#000'}} >
                     <ResetPassword />
                   </NavLink>
+                  {/*<NavLink tag={Link} to='/admin' color="link" style={{textDecoration: 'none', color: '#000'}} >
+                    Admin
+                  </NavLink>*/}
                   <DropdownItem divider />
                 </DropdownMenu>
               </UncontrolledDropdown>

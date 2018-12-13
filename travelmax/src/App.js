@@ -6,6 +6,7 @@ import FlightSearch from './Containers/FlightSearch/FlightSearch';
 import HotelSearch from './Containers/HotelSearch/HotelSearch';
 import DashboardContainer from './Containers/Dashboard/DashboardContainer';
 import { withAuthentication } from './Components/Sessions';
+import AdminPage from './Containers/Admin';
 import { Route, Switch } from 'react-router-dom';
 
 import './App.css';
@@ -21,6 +22,7 @@ class App extends Component {
             <Route path='/search' exact component={FlightSearch} />
             <Route path='/Hotels/search' exact component={HotelSearch} />
             <Route path='/dashboard' exact component={DashboardContainer} />
+            <Route path='/admin' exact component={AdminPage} />
           </Switch>
         </Layout>
       </div>

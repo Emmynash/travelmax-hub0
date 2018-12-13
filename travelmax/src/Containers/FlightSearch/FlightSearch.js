@@ -1,7 +1,8 @@
 import React from 'react';
+import { withAuthorization } from '../../Components/Sessions';
 import image from '../../Assets/Images/home4.jpg';
 
-const FlightSearch = (props) => (
+const Search = (props) => (
     
     <div style={{marginTop: '25px', backgroundImage: `url(${image})`, padding: '50px', width: '100%'}}>
      <iframe scrolling="yes" 
@@ -13,5 +14,6 @@ const FlightSearch = (props) => (
     </div>
     
     );
-    
-export default FlightSearch;
+
+const condition = authUser => !!authUser;
+export default withAuthorization(condition) (Search);

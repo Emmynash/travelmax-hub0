@@ -5,10 +5,11 @@ import SimpleReactValidator from 'simple-react-validator';
 import { withRouter } from 'react-router-dom';
 import Spinner from '../Spinner/Spinner';
 import { withFirebase } from '../../../Firebase';
-import PasswordForget from '../../../PasswordForget'
+import PasswordForget from '../../../PasswordForget';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter,  Form, FormGroup, Label, Input } from 'reactstrap';
 
 class LoginModal extends React.Component {
+  _isMounted = false;
   constructor(props) {
     super(props);
     this.validator = new SimpleReactValidator();
@@ -36,11 +37,12 @@ class LoginModal extends React.Component {
               [name]: value
             }
         });
-    console.log(event.target.value);
+    // console.log(event.target.value);
   }
   
  
   submitFormHandler(event){
+     this._isMounted = true;
     event.preventDefault();
     if( this.validator.allValid() ){
       this.setState({loading: true});
@@ -70,10 +72,15 @@ class LoginModal extends React.Component {
       this.forceUpdate();
     }
   }
+ 
   toggle() {
     this.setState({
       modal: !this.state.modal
     });
+  }
+  
+  componentWillUnmount() {
+    this._isMounted = false;
   }
 
   render() {

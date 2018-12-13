@@ -5,7 +5,8 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 // import grid from './DashboardContainer.css';
-
+import { withAuthorization, AuthUserContext } from '../../Components/Sessions';
+import { compose } from 'recompose';
 import image from '../../Assets/Images/dashboardHolder.jpg';
 
 const styles = theme => ({
@@ -34,8 +35,15 @@ class DashboardContainer extends React.Component{
                 <Grid container spacing={24}>
                         <Grid item xs={12}>
                             <Paper className={classes.paper}>
+                            <AuthUserContext.Consumer>
+                                {authUser => (
+                                  <div>
+                                    <h1>Signin as: {authUser.email}</h1>
+                                  </div>
+                                )}
+                             </AuthUserContext.Consumer>
                                  <Typography variant="h4" style={{color: "#ef5635"}} gutterBottom>
-                                    Coming to you soon!
+                                   Dashboard under construction
                                  </Typography>
                             </Paper>
                         </Grid> 
@@ -49,4 +57,7 @@ DashboardContainer.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles) (DashboardContainer);
+const condition = authUser => !!authUser;
+export default compose(withStyles(styles), withAuthorization(condition)) (DashboardContainer);
+
+

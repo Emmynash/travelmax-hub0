@@ -24,9 +24,9 @@ const styles = theme => ({
   root: {
     width: '100%',
     color: 'grey',
-    // backgroundColor: 'grey',
+    backgroundSize: 'cover',
     backgroundImage: `url(${image})`,
-   
+    backgroundRepeat: 'no-repeat'
   },
   
  
@@ -102,8 +102,8 @@ toggleCalendar (e) {
          
     <div className={classes.root}>
      <div position="relative" style={{ backgroundSize: 'cover', overflow: 'hidden', backgroundRepeat: 'no-repeat', backgroundImage: `url(require("../../../Assets/Images/home4.jpg"))`, height: '550px', width: '100%', flexFlow: 'column', position: 'relative',  display: 'flex', alignItems : 'center', justifyContent: 'space-between', padding: '180px 20px', marginTop:'30'}}>
-     <h2 style={{color: '#443b3b'}}>Search, Compare and Book Cheap Flights</h2>
-     <h4 style={{alignItems: 'center', textAlign: 'center', color: '#443b3b'}}>Subscribe to one of our packages today, experience the blue wings and tell the difference</h4>
+     <h2 style={{color: '#443b3b', marginTop: '20px'}}>Search, Compare and Book Cheap Flights</h2>
+     <h4 style={{alignItems: 'center', textAlign: 'center', color: '#443b3b'}}>Subscribe to one of our packages today, experience the blue wings <span style={{color: '#8fd935'}}><strong>and tell the difference</strong></span></h4>
       <AppBar position="relative" style={{backgroundColor: 'transparent',  position: 'relative',  display: 'flex', alignItems : 'center', justifyContent: 'space-between', padding: '10px', zIndex:500}}>
         <Toolbar className={content.content}>
           {/*<div className={classes.search}>
@@ -174,11 +174,11 @@ toggleCalendar (e) {
         href="#"
         style={{color: '#ef5635'}}
         >
-       <AuthUserContext.Consumer>
-          {authUser =>
-            authUser ? <NavLink  style={{color: '#ef5635', width: "60px", textDecoration: 'none'}} to='/search'>Search</NavLink> :  <RegisterModal />
-          }
-       </AuthUserContext.Consumer>
+         <AuthUserContext.Consumer>
+            {authUser =>
+              authUser ? <NavLink  style={{color: '#ef5635', width: "60px", textDecoration: 'none'}} to='/search'>Search</NavLink> :  <RegisterModal />
+            }
+         </AuthUserContext.Consumer>
         </Button>
         
         </Toolbar>
