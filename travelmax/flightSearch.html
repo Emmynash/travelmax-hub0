@@ -1,22 +1,19 @@
-import React, {Component} from 'react';
-import $ from "jquery";
-// import { withAuthorization } from '../../Components/Sessions';
-import image from '../../Assets/Images/home4.jpg';
 
-class Search extends Component{
-    
-    componentDidMount(){
-    console.log(this.props);
-   var addScript = document.createElement('script');
-    addScript.setAttribute('src', 'https://www.travelstart.com.ng/resources/js/vendor/jquery.browser-0.0.8.min.js?');
-    document.body.appendChild(addScript);
-    
-    var addJQuery = document.createElement('script');
-    addJQuery.setAttribute('src', 'https://www.travelstart.com.ng/resources/js/jquery.ba-postmessage.min.js?');
-    document.body.appendChild(addJQuery);
-    
-    
-   // these variables can be configured 
+<body>
+<div id="mainContent">
+<p id="helloText">?</p>
+<button id="clickButton" class="buttonStyle">click me</button>
+</div>
+<div id='logs' ></div> 
+<iframe id='travelstartIframe-696bf24d-0ca0-44a1-ac46-887d8fa645e5' 
+    frameBorder='0' 
+    scrolling='no' 
+    style='margin: 0px; padding: 0px; border: 0px; height: 0px; background-color: #fafafa;'>
+</iframe> 
+<script src='//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js' type='text/javascript'></script> 
+<script type='text/javascript' src='https://www.travelstart.com.ng/resources/js/jquery.ba-postmessage.min.js'></script> 
+<script type='text/javascript'> 
+	// these variables can be configured 
 	var travelstartIframeId = 'travelstartIframe-696bf24d-0ca0-44a1-ac46-887d8fa645e5'; 
 	var iframeUrl = 'https://www.travelstart.com.ng'; 
 	var logMessages = false; 
@@ -47,10 +44,10 @@ class Search extends Component{
 	}				 
 	for (var key in urlParams){ 
 		if (urlParams.hasOwnProperty(key)){ 
-			if (key === 'search' && urlParams[key] === 'true'){ 
+			if (key == 'search' && urlParams[key] == 'true'){ 
 				autoSearch = true; 
 			} 
-			if(	key === 'affId' || key === 'affid' || key === 'aff_id'){ 
+			if(	key == 'affId' || key == 'affid' || key == 'aff_id'){ 
 				affiliateIdExist = true ; 
 			} 
 			iframeParams.push(key + '=' + urlParams[key]); 
@@ -87,7 +84,7 @@ class Search extends Component{
 	if(!('landing_page' in alreadyExist)){ 
 		iframeParams.push('landing_page=false'); 
 	}		 
-	if (affCurrency.length === 3){ 
+	if (affCurrency.length == 3){ 
 		iframeParams.push('currency=' + affCurrency); 
 	} 
 	if(!('iframeVersion' in alreadyExist)){ 
@@ -105,11 +102,9 @@ class Search extends Component{
 		iframe.height(newHeight); 
 	} 
 	setIframeSize(width, height); 
-	
-	window.addEventListener("message", receiveMessage, false);
-    function receiveMessage(e, host) { 
-    try { 
-         if (typeof e.data !== 'undefined') { 
+   jQuery.receiveMessage(function(e, host) { 
+     try { 
+        if (typeof e.data !== 'undefined') { 
             var dataElements = e.data.split('&'); 
             if (dataElements) { 
                 if (dataElements.length === 1) { 
@@ -124,7 +119,7 @@ class Search extends Component{
                          var scrollTo = dataElements[2].split('='); 
                          if (scrollTo[1] !== 'none') { 
                              var iframeTop = iframe.position().top; 
-                             if (scrollTo[1] === 'to-top') { 
+                             if (scrollTo[1] == 'to-top') { 
                                  window.scrollTo(0, iframeTop); 
                              } else { 
                                  window.scrollTo(0, iframeTop+parseInt(scrollTo[1])); 
@@ -137,36 +132,7 @@ class Search extends Component{
      } catch (err) { 
          window.console && console.log(err); 
      } 
- }
- //iframeUrl;
- 
-//  new receiveMessage ();
+ }, iframeUrl); 
+ </script>
 
-}
-   
-    render(){
-        return(
-             <div style={{marginTop: '25px', backgroundImage: `url(${image})`, padding: '50px', width: '100%'}}>
-             
-             {/*<iframe scrolling="yes" 
-                title="flights_Search" 
-                width="849" height="217" 
-                frameBorder="0" 
-                src="//www.travelpayouts.com/widgets/0634d95710ca734cd07698c44bbb9df6.html?v=1553">
-             </iframe>*/}
-             <iframe id='travelstartIframe-696bf24d-0ca0-44a1-ac46-887d8fa645e5' 
-                title="flights_Search"
-                width="849" height="217" 
-                frameBorder='0' 
-                scrolling='no' 
-                style={{margin: '0px', padding: '0px', border: '0px', height: '0px', backgroundColor: '#fafafa'}}>
-            </iframe>
-            
-            </div>
-            );
-    }
-}
-
-// const condition = authUser => !!authUser;
- //withAuthorization(condition) (
-export default Search;
+</body>

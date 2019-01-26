@@ -6,13 +6,15 @@ import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import image from '../../../Assets/Images/home1.jpg';
 import content from './search.css';
-import RegisterModal from '../../UI/Modal/Register/Register';
-import { AuthUserContext } from '../../Sessions';
+// import RegisterModal from '../../UI/Modal/Register/Register';
+// import { AuthUserContext } from '../../Sessions';
 import { NavLink } from 'react-router-dom';
 
 import moment from "moment";
 import "react-datepicker/dist/react-datepicker.css";
 import { fade } from '@material-ui/core/styles/colorManipulator';
+
+// import FlightSearch from '../../../Containers/FlightSearch/flightSearch.html';
 
 // import Datepicker from './DatePicker/DatePicker';
 // import DatePicker from "react-datepicker";
@@ -170,7 +172,7 @@ toggleCalendar (e) {
           style={{margin: '0px', padding: '0px', border: '0px', height: '0px', backgroundColor: '#fafafa'}}>
         </iframe> */}
         
-        <Button variant="contained" 
+        {/*<Button variant="contained" 
         href="#"
         style={{color: '#ef5635'}}
         >
@@ -179,7 +181,16 @@ toggleCalendar (e) {
               authUser ? <NavLink  style={{color: '#ef5635', width: "60px", textDecoration: 'none'}} to='/search'>Search</NavLink> :  <RegisterModal />
             }
          </AuthUserContext.Consumer>
+        </Button>*/}
+        <Button variant="contained" 
+        href="#"
+        style={{color: '#ef5635'}}
+        >
+        <NavLink  style={{color: '#ef5635', width: "60px", textDecoration: 'none'}} to='/search'>Search</NavLink>
         </Button>
+       {/* <a style={{color: '#ef5635'}}  href="../../../../flightSearch.html">
+          Search
+        </a>*/}
         
         </Toolbar>
       </AppBar>

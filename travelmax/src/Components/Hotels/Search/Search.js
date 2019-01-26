@@ -5,8 +5,8 @@ import Toolbar from '@material-ui/core/Toolbar';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import RegisterModal from '../../UI/Modal/Register/Register';
-import { AuthUserContext } from '../../Sessions';
+// import RegisterModal from '../../UI/Modal/Register/Register';
+// import { AuthUserContext } from '../../Sessions';
 import { NavLink } from 'react-router-dom';
 
 import image from '../../../Assets/Images/Hotel_2.jpg';
@@ -151,7 +151,7 @@ toggleCalendar (e) {
           </div>
            
           <Button variant="outlined" href="#" >Search</Button>*/}
-       <Button variant="contained" 
+       {/*<Button variant="contained" 
         href="#"
         style={{color: '#ef5635'}}
         >
@@ -160,6 +160,13 @@ toggleCalendar (e) {
             authUser ? <NavLink  style={{color: '#ef5635', width: "60px", textDecoration: 'none'}} to='/search'>Search</NavLink> :  <RegisterModal />
           }
        </AuthUserContext.Consumer>
+        </Button>*/}
+        
+         <Button variant="contained" 
+        href="#"
+        style={{color: '#ef5635'}}
+        >
+        <NavLink  style={{color: '#ef5635', width: "60px", textDecoration: 'none'}} to='#'>Search</NavLink>
         </Button>
         </Toolbar>
       </AppBar>
