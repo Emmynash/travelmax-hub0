@@ -102,7 +102,7 @@ class Content extends Component{
                                  GOLD PACKAGE <br />
                                  ₦115, 000.00 ($350.00)
                              </Typography>
-                                  a startup purchase of the Gold PACKAGE with a fee of just ₦115,000.00 or $ 350.00 and recruiting 
+                                  A startup purchase of the GOLD PACKAGE with a fee of just ₦115,000.00 or $ 350.00 and recruiting 
                                   3 more travel accounts will earn you enough points to travel to the destination of your choice within Emirates and Asia <br />
                             <span style={{color:"#ef5635"}} className={classes.button}>
                                 <AuthUserContext.Consumer>
@@ -120,7 +120,7 @@ class Content extends Component{
                                  PLATINIUM PACKAGE <br />
                                  ₦150, 000.00 ($450.00)
                              </Typography>
-                                 Purchase the Gold PACKAGE with just a fee of  ₦115, 000.00 or $350.00, recruit 
+                                 Purchase the PLATINIUM PACKAGE with just a fee of  ₦150, 000.00 or $450.00, recruit 
                                  3 more travel accounts to earn enough points to travel to your choice destination within Emirates, Asia, USA, UK etc  <br />
                             <span style={{color:"#ef5635"}} className={classes.button}>
                                 <AuthUserContext.Consumer>

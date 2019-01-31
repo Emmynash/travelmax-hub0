@@ -166,7 +166,7 @@ toggleCalendar (e) {
         href="#"
         style={{color: '#ef5635'}}
         >
-        <NavLink  style={{color: '#ef5635', width: "60px", textDecoration: 'none'}} to='#'>Search</NavLink>
+        <NavLink  style={{color: '#ef5635', width: "60px", textDecoration: 'none'}} to='/hotels_search'>Search</NavLink>
         </Button>
         </Toolbar>
       </AppBar>

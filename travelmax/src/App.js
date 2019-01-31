@@ -19,8 +19,8 @@ class App extends Component {
           <Switch>
             <Route path='/' exact  component={FlightContainer} />
             <Route path='/hotels'  component={HotelContainer} />
-            <Route path='/search' exact component={FlightSearch} />
-            <Route path='/Hotels/search' exact component={HotelSearch} />
+            <Route path='/flights_search' exact component={FlightSearch} />
+            <Route path='/hotels_search' exact component={HotelSearch} />
             <Route path='/dashboard' exact component={DashboardContainer} />
             <Route path='/admin' exact component={AdminPage} />
           </Switch>
