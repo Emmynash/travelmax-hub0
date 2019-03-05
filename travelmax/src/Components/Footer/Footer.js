@@ -20,13 +20,13 @@ return (
              <h5 style={{marginLeft:'25px',}} className="title">Quick</h5>
               <ul style={{color: '#ef5635'}}>
                 <li style={{color: '#ef5635'}} className="list-unstyled">
-                  <a href="/">Faq</a>
+                 <NavLink to="/faq">Faq</NavLink>
                 </li>
                 <li style={{color: '#ef5635'}} className="list-unstyled">
                   <a href="/">about us</a>
                 </li>
                 <li style={{color: '#ef5635'}} className="list-unstyled">
-                  <a href="/">How it works</a>
+                 <a href="/">How it works</a>
                 </li>
               </ul>
               </Col>
@@ -34,7 +34,7 @@ return (
              <h5 style={{marginLeft:'50px'}} className="title">Links</h5>
               <ul style={{color: '#ef5635'}}>
                 <li style={{color: '#ef5635'}} className="list-unstyled">
-                  <a href="/">Terms & Condition</a>
+                   <NavLink to="/terms-and-conditions">Terms & Condition</NavLink>
                 </li>
                 <li style={{color: '#ef5635'}} className="list-unstyled">
                   <NavLink to="/">Flights</NavLink>

@@ -5,6 +5,7 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import MaterialIcon from 'material-icons-react';
+import { Link } from 'react-router-dom';
 import grid from './Content.css';
 import ImageGallery from '../ImageSlide/ImageSlide';
 import RegisterModal from '../../UI/Modal/Register/Register';
@@ -64,14 +65,14 @@ class Content extends Component{
                           <MaterialIcon icon="calendar_view_day" color='#CD7F32' size={60}/>
                           <Typography variant="h6" gutterBottom>
                               BRONZE PACKAGE <br />
-                              ₦35, 000.00 ($150.00)
+                              ₦36, 000.00
                          </Typography>
-                             A startup purchase of the BONZE PACKAGE with just a fee of ₦35,000 or $ 150 and recruiting 
+                             A startup purchase of the BONZE PACKAGE with just a fee of ₦36,000 and recruiting 
                              3 more travel accounts will earn you enough points to travel for your local vacations (your choice destination) within Nigeria.<br />
                           <span style={{color:"#ef5635"}} className={classes.button}>
                             <AuthUserContext.Consumer>
                                   {authUser =>
-                                    authUser ? <Button outline color="secondary">Subscribe</Button> :  <RegisterModal />
+                                    authUser ? <Button outline tag={Link} to={{pathname: '/package/subscribe/bronze', search: '?package_plan=bronze'}} color="secondary">Subscribe</Button> :  <RegisterModal />
                                   }
                             </AuthUserContext.Consumer>
                           </span>
@@ -82,14 +83,14 @@ class Content extends Component{
                             <MaterialIcon icon="dns" color='#C0C0C0' size={60}/>
                               <Typography variant="h6" gutterBottom>
                                  SILVER PACKAGE <br />
-                                 ₦75, 000.00 ($250.00)
+                                 ₦76, 000.00
                              </Typography>
-                                 A startup purchase of the SILVER PACKAGE with just a fee of ₦75,000 or $250 and recruiting 
+                                 A startup purchase of the SILVER PACKAGE with just a fee of ₦76,000 and recruiting 
                                  3 more travel accounts will earn you enough points to travel to the destination of your choice in any country within the African continent. <br />
                              <span style={{color:"#ef5635"}} className={classes.button}>
                                <AuthUserContext.Consumer>
                                   {authUser =>
-                                    authUser ? <Button outline color="secondary">Subscribe</Button> :  <RegisterModal />
+                                    authUser ? <Button outline tag={Link} to={{pathname: '/package/subscribe/silver', search: '?package_plan=silver'}} color="secondary">Subscribe</Button> :  <RegisterModal />
                                   }
                                </AuthUserContext.Consumer>
                             </span>
@@ -100,14 +101,14 @@ class Content extends Component{
                           <MaterialIcon icon="dashboard" color='#FFD700' size={60}/>
                               <Typography variant="h6" gutterBottom>
                                  GOLD PACKAGE <br />
-                                 ₦115, 000.00 ($350.00)
+                                 ₦116, 000.00
                              </Typography>
-                                  A startup purchase of the GOLD PACKAGE with a fee of just ₦115,000.00 or $ 350.00 and recruiting 
+                                  A startup purchase of the GOLD PACKAGE with a fee of just ₦116,000.00 and recruiting 
                                   3 more travel accounts will earn you enough points to travel to the destination of your choice within Emirates and Asia <br />
                             <span style={{color:"#ef5635"}} className={classes.button}>
                                 <AuthUserContext.Consumer>
                                   {authUser =>
-                                    authUser ? <Button outline color="secondary">Subscribe</Button> :  <RegisterModal />
+                                    authUser ? <Button outline tag={Link} to={{pathname: '/package/subscribe/gold', search: '?package_plan=gold'}} color="secondary">Subscribe</Button> :  <RegisterModal />
                                   }
                                </AuthUserContext.Consumer>
                             </span>
@@ -118,14 +119,14 @@ class Content extends Component{
                           <MaterialIcon icon="polymer" color='#E5E4E2' size={60}/>
                               <Typography variant="h6" gutterBottom>
                                  PLATINIUM PACKAGE <br />
-                                 ₦150, 000.00 ($450.00)
+                                 ₦151, 000.00
                              </Typography>
-                                 Purchase the PLATINIUM PACKAGE with just a fee of  ₦150, 000.00 or $450.00, recruit 
+                                 Purchase the PLATINIUM PACKAGE with just a fee of  ₦151, 000.00, recruit 
                                  3 more travel accounts to earn enough points to travel to your choice destination within Emirates, Asia, USA, UK etc  <br />
                             <span style={{color:"#ef5635"}} className={classes.button}>
                                 <AuthUserContext.Consumer>
                                   {authUser =>
-                                    authUser ? <Button outline color="secondary">Subscribe</Button> :  <RegisterModal />
+                                    authUser ? <Button outline tag={Link} to={{pathname: '/package/subscribe/platinium', search: '?package_plan=platinium'}} color="secondary">Subscribe</Button> :  <RegisterModal />
                                   }
                                </AuthUserContext.Consumer>
                             </span>

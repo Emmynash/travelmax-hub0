@@ -55,7 +55,7 @@ class LoginModal extends React.Component {
             loading: false,
              modal: false
           });
-          this.props.history.push({pathname: '/search'});
+          this.props.history.push({pathname: '/dashboard'});
         })
         .catch(error =>{
           this.setState({
