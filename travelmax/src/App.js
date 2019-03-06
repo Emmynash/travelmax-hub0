@@ -7,6 +7,7 @@ import HotelSearch from './Containers/HotelSearch/HotelSearch';
 import DashboardContainer from './Containers/Dashboard/Template/Dashboard';
 import faq from './Containers/FAQ';
 import policy from './Containers/Policy';
+import ErrorPageContainer from './Containers/404';
 import BronzeContainer from './Components/Payment/subscribe/Bronze_Package/PayConfirmation';
 import SilverContainer from './Components/Payment/subscribe/Silver_Package/PayConfirmation';
 import GoldContainer from './Components/Payment/subscribe/Gold_Package/PayConfirmation';
@@ -35,7 +36,8 @@ class App extends Component {
              <Route path='/package/subscribe/gold' exact component={GoldContainer} />
             <Route path='/package/subscribe/platinium' exact component={PlatiniumContainer} />
             <Route path='/faq' exact component={faq} />
-             <Route path='/terms-and-conditions' exact component={policy} />
+            <Route path='/terms-and-conditions' exact component={policy} />
+            <Route component={ErrorPageContainer} />
           </Switch>
         </Layout>
       </div>

@@ -43,34 +43,34 @@ function FrequentQuestions(props) {
               </AppBar>
               <ExpansionPanel>
                 <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                  <Typography className={classes.heading}>Expansion Panel 1</Typography>
+                  <Typography className={classes.heading}>Is it safe to make the payment online?</Typography>
                 </ExpansionPanelSummary>
                 <ExpansionPanelDetails>
                   <Typography>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-                    sit amet blandit leo lobortis eget.
+                      Yes. Absolutely! Nothing is more important to us than the privacy and integrity of your personal information. Our website is protected with Thawte SGC-enabled SSL Certificates and displays the Thawte Secured Seal on secure pages.
+                      For more information, please check out Thawte's website
                   </Typography>
                 </ExpansionPanelDetails>
               </ExpansionPanel>
               <ExpansionPanel>
                 <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                  <Typography className={classes.heading}>Expansion Panel 2</Typography>
+                  <Typography className={classes.heading}>How do I pay for my booking or Packages?</Typography>
                 </ExpansionPanelSummary>
                 <ExpansionPanelDetails>
                   <Typography>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-                    sit amet blandit leo lobortis eget.
+                    You can pay either by Internet Transfer or Quickteller while for Packages we received payment via debit card.
+                    Your payment should be made immediately in order to have the quoted price guaranteed.
                   </Typography>
                 </ExpansionPanelDetails>
               </ExpansionPanel>
               <ExpansionPanel>
                 <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                  <Typography className={classes.heading}>Expansion Panel 3</Typography>
+                  <Typography className={classes.heading}>I am having problems paying for my booking or packages, can you help?</Typography>
                 </ExpansionPanelSummary>
                 <ExpansionPanelDetails>
                   <Typography>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-                    sit amet blandit leo lobortis eget.
+                      If you have trouble making the payment, please double check that you have typed in your name, all digits (no spaces), expiry date and the 3 digits on the back of card correctly.
+                      If all information is correctly stated, please contact your bank to make sure that the complications are not initiated on their side (for example because you might have a limit for large amounts).
                   </Typography>
                 </ExpansionPanelDetails>
               </ExpansionPanel>

@@ -8,6 +8,9 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
+import {Button} from 'reactstrap';
+import {Link} from 'react-router-dom';
+
 const styles = {
   root: {
     width: '100%',
@@ -25,10 +28,10 @@ function createData(name, calories, fat, carbs, protein) {
 }
 
 const data = [
-  createData('Bronze',   36000.00, "within Nigeria", "Buy"),
-  createData('Silver', 7600.00, "within Africa", "Buy"),
-  createData('Gold', 116000.00, "within Emirates & Asia", "Buy"),
-  createData('Platinium', 151000.00, "+ UK, USA", "Buy" ),
+  createData('Bronze',   36000.00, "within Nigeria", <Button  tag={Link} to="/package/subscribe/bronze" color="link">Buy</Button>),
+  createData('Silver', 7600.00, "within Africa", <Button tag={Link} to="/package/subscribe/silver" color="link">Buy</Button>),
+  createData('Gold', 116000.00, "within Emirates & Asia", <Button tag={Link} to="/package/subscribe/gold" color="link">Buy</Button>),
+  createData('Platinium', 151000.00, "+ UK, USA", <Button tag={Link} to="/package/subscribe/platinium" color="link">Buy</Button> ),
 ];
 
 function SimpleTable(props) {
@@ -42,7 +45,7 @@ function SimpleTable(props) {
             <TableCell>Plan</TableCell>
             <TableCell align="right">Price₦</TableCell>
             <TableCell align="right">Travel</TableCell>
-            <TableCell align="right">Subscribe</TableCell>
+            <TableCell style={{marginLeft: "-30px"}} align="right">Subscribe</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
