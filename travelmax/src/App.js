@@ -5,6 +5,8 @@ import FlightContainer from './Containers/Flights/FlightContainer';
 import FlightSearch from './Containers/FlightSearch/FlightSearch';
 import HotelSearch from './Containers/HotelSearch/HotelSearch';
 import DashboardContainer from './Containers/Dashboard/Template/Dashboard';
+import LoginModal from './Components/UI/Modal/Login/loginModal';
+import RegisterModal from './Components/UI/Modal/Register/Register';
 import faq from './Containers/FAQ';
 import policy from './Containers/Policy';
 import ErrorPageContainer from './Containers/404';
@@ -36,6 +38,8 @@ class App extends Component {
              <Route path='/package/subscribe/gold' exact component={GoldContainer} />
             <Route path='/package/subscribe/platinium' exact component={PlatiniumContainer} />
             <Route path='/faq' exact component={faq} />
+            <Route path='/login' exact component={LoginModal} />
+            <Route path='/register' exact component={RegisterModal} />
             <Route path='/terms-and-conditions' exact component={policy} />
             <Route component={ErrorPageContainer} />
           </Switch>

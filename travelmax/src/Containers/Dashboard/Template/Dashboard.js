@@ -24,7 +24,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Component from '@reactions/component';
 import Calendar from 'react-calendar';
 
-import { Col, Row, Button, Form, FormGroup, Label, Input, TabContent, TabPane, Table, } from 'reactstrap';
+import {Col, Row, Button, Form, FormGroup, Label, Input, TabContent, TabPane, Table, } from 'reactstrap';
 import {Link} from 'react-router-dom';
 
 import { mainListItems, secondaryListItems } from './listItems';
@@ -146,10 +146,10 @@ class Dashboard extends React.Component {
     const { classes } = this.props;
 
     return (
-      <div style={{marginTop: "20px"}} className={classes.root}>
+      <div className={classes.root}>
         <CssBaseline />
         <AppBar
-          style={{marginTop: "85px"}}
+          style={{marginTop: "60px"}}
           position="absolute"
           className={classNames(classes.appBar, this.state.open && classes.appBarShift)}
         >
@@ -289,25 +289,19 @@ class Dashboard extends React.Component {
               <TabPane tabId="1">
                   <Row>
                    <Table borderless>
-                            <thead>
-                                <tr>
-                                    <th></th>
-                                    <th>
-                                        <Calendar
+                    <Row>
+                      <Col xs="8" sm="4"><Calendar
                                           onChange={this.onChange}
                                           value={this.state.date}
                                           />
-                                    </th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th> <span style={{alignItems: "center", marginBottom: "10px"}}>Check your Calendar, You maybe Travelling Soon!</span><Button tag={Link} color="link" to="/flights_search">Search & Book</Button>
-                                    </th>
-                                </tr>
-                           </thead>
-                        </Table>
+                      </Col>
+                      <Col xs="4" sm="4"></Col>
+                      <Col sm="4">
+                        <span style={{alignItems: "center", marginBottom: "10px"}}>Check your Calendar, You maybe Travelling Soon!</span><Button tag={Link} color="link" to="/flights_search">Search & Book</Button>
+                      </Col>
                     </Row>
+                  </Table>
+                </Row>
                </TabPane>
              </TabContent>
           </div>

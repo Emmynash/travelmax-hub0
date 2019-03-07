@@ -68,9 +68,9 @@ class Content extends Component{
         const { open } = this.state;
         return(
             <Aux>
-                <div className={classes.root}>
+                <div className={classes.root} style={{width: '98%'}}>
                       <br /> <br />
-                         <Grid className={grid.content} container spacing={24}>
+                         <Grid className={grid.content} style={{padding:"20px"}} container spacing={24}>
                             <Grid item xs={12}>
                             
                                 <Paper className={classes.paper}>
@@ -84,7 +84,7 @@ class Content extends Component{
                   </Grid> 
                   <Grid />
                   <br /> <br /> <br />
-                  <Grid className={grid.content} container spacing={24}>
+                  <Grid className={grid.content} style={{padding:"20px"}} container spacing={24}>
                         <Grid item xs={12}>
                             <Paper className={classes.paper}>
                                  <Typography variant="h4" gutterBottom>
@@ -124,7 +124,7 @@ class Content extends Component{
                         </Grid> 
                     </Grid> 
                     <br /> <br /> <br />
-                     <Grid className={grid.content} container spacing={24}>
+                     <Grid className={grid.content} style={{padding:"20px"}} container spacing={24}>
                         <Grid item xs={12}>
                         
                             <Paper className={classes.paper}>

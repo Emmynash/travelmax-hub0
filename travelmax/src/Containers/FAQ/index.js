@@ -32,7 +32,7 @@ function FrequentQuestions(props) {
   const { classes } = props;
   return (
     <div className={classes.root}>
-    <Grid container style={{padding: "20px", marginTop: "10px"}} spacing={24}>
+    <Grid container style={{padding: "20px"}} spacing={24}>
        <Grid item xs={12}>
              <AppBar position="static" style={{ marginBottom: "20px"}} color="default">
                 <Toolbar>

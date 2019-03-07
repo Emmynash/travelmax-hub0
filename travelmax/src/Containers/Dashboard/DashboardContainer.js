@@ -38,7 +38,7 @@ class DashboardContainer extends React.Component{
                             <AuthUserContext.Consumer>
                                 {authUser => (
                                   <div>
-                                    <h1>Signin as: {authUser.email}</h1>
+                                    Welcome; {authUser.email}
                                   </div>
                                 )}
                              </AuthUserContext.Consumer>

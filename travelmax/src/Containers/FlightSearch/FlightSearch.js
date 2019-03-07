@@ -146,14 +146,8 @@ class Search extends Component{
    
     render(){
         return(
-             <div style={{marginTop: '25px', backgroundImage: `url(${image})`, padding: '50px', width: '100%'}}>
+             <div style={{backgroundImage: `url(${image})`, padding: '50px', width: '100%'}}>
              
-             {/*<iframe scrolling="yes" 
-                title="flights_Search" 
-                width="849" height="217" 
-                frameBorder="0" 
-                src="//www.travelpayouts.com/widgets/0634d95710ca734cd07698c44bbb9df6.html?v=1553">
-             </iframe>*/}
              <iframe id='travelstartIframe-696bf24d-0ca0-44a1-ac46-887d8fa645e5' 
                 title="flights_Search"
                 width="849" height="217" 

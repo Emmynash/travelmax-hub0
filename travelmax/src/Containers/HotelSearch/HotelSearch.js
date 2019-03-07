@@ -3,7 +3,7 @@ import image from '../../Assets/Images/home4.jpg';
 
 const HotelSearch = (props) => (
     
-    <div style={{marginTop: '25px', backgroundImage: `url(${image})`, padding: '50px', width: '100%'}}>
+    <div style={{backgroundImage: `url(${image})`, padding: '50px', width: '100%'}}>
     <iframe scrolling="yes" 
         title="flights_Search" 
         width="100%" 

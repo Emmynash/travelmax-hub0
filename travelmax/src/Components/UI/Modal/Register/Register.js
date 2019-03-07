@@ -1,12 +1,11 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import SimpleReactValidator from 'simple-react-validator';
-import LoginModal from '../Login/loginModal';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import Spinner from '../Spinner/Spinner';
 import { withFirebase } from '../../../Firebase';
 // import { compose } from 'recompose'
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter,  Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Button, Container, Col, Row,  Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 
 
 class RegisterModal extends React.Component {
@@ -164,7 +163,7 @@ class RegisterModal extends React.Component {
                 <FormGroup>
                   <Input style={{marginLeft: "5px"}} type="checkbox" defaultChecked={userform.accepted} name="accepted" id="accepted" onChange={this.userCheckHandler} />
                   <FormText style={{marginLeft: "25px"}} color="muted">
-                   Agree to <a href='/'>Terms & Condition</a>
+                   Agreed to our policy? <Button tag={Link} to='/terms-and-conditions'>Terms & Condition</Button>
                   </FormText>
                   <span style={{color:'red'}}>{this.validator.message('checkbox', userform.accepted, 'accepted')}</span>
                 </FormGroup>
@@ -178,17 +177,22 @@ class RegisterModal extends React.Component {
       
     return (
       <div>
-        <Button color="link" style={{color: '#ef5635', textDecoration: 'none'}} onClick={this.toggle}>Get Started</Button>
-        <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-          <ModalHeader style={{color:"#ef5635"}} toggle={this.toggle}>Please Register to proceed!</ModalHeader>
-          <ModalBody>
-           {form}
-          </ModalBody>
-          <ModalFooter>
-            <div><span>Already have an account? <LoginModal /></span></div> <br />
-            <Button color="secondary" onClick={this.toggle}>Cancel</Button>
-          </ModalFooter>
-        </Modal>
+        <Container>
+         <Row>
+          <Col sm="12" md={{ size: 6, offset: 3 }}>
+             <h4  style={{color:"#ef5635", marginTop: "20px"}}>Please Register to proceed!</h4>
+          </Col>
+         </Row>
+         <Row>
+          <Col sm="12" md={{ size: 6, offset: 3 }}>
+            {form}
+            <div>
+             <div><span>Already have an account? <Button tag={Link} to='/login' color="link">Login</Button></span></div>
+              <Button color="secondary" tag={Link} to='/'>Cancel</Button>
+            </div>
+          </Col>
+        </Row>
+        </Container>
       </div>
     );
   }

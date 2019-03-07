@@ -121,31 +121,122 @@ function Pricing(props) {
   return (
     <React.Fragment>
       <CssBaseline />
-      <AppBar position="static" color="default" className={classes.appBar}>
-        <Toolbar>
-          <Typography variant="h6" color="inherit" noWrap className={classes.toolbarTitle}>
-            Company name
-          </Typography>
-          <Button>Features</Button>
-          <Button>Enterprise</Button>
-          <Button>Support</Button>
-          <Button color="primary" variant="outlined">
-            Login
-          </Button>
-        </Toolbar>
-      </AppBar>
       <main className={classes.layout}>
         {/* Hero unit */}
         <div className={classes.heroContent}>
           <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
-            Pricing
-          </Typography>
-          <Typography variant="h6" align="center" color="textSecondary" component="p">
-            Quickly build an effective pricing table for your potential customers with this layout.
-            It&apos;s built with default Material-UI components with little customization.
+            Packages
           </Typography>
         </div>
         {/* End hero unit */}
+        {/*New Price Grid*/}
+    <Grid container spacing={40} alignItems="flex-end">
+            <Grid item xs={12} sm={6} md={4}>
+              <Card>
+                <CardHeader
+                  title="Bronze"
+                  subheader="Easily Purchase"
+                  titleTypographyProps={{ align: 'center' }}
+                  subheaderTypographyProps={{ align: 'center' }}
+                  action={null}
+                  className={classes.cardHeader}
+                />
+                <CardContent>
+                  <div className={classes.cardPricing}>
+                    <Typography component="h2" variant="h3" color="textPrimary">
+                       ₦36, 000.00
+                    </Typography>
+                    <Typography variant="h6" color="textSecondary">
+                      /yr
+                    </Typography>
+                  </div>
+                    <Typography variant="subtitle1" align="center">
+                      'Recruit 3 more travel accounts', 
+                      'earn points to travel for local vacations' 
+                      'within Nigeria'
+                    </Typography>
+                </CardContent>
+                <CardActions className={classes.cardActions}>
+                  <Button fullWidth variant="outlined" color="primary">
+                    Buy Now
+                  </Button>
+                </CardActions>
+              </Card>
+            </Grid>
+            
+            
+            <Grid item xs={12} sm={6} md={4}>
+              <Card>
+                <CardHeader
+                  title="Silver"
+                  subheader="Most Popular"
+                  titleTypographyProps={{ align: 'center' }}
+                  subheaderTypographyProps={{ align: 'center' }}
+                  action={<StarIcon />}
+                  className={classes.cardHeader}
+                />
+                <CardContent>
+                  <div className={classes.cardPricing}>
+                    <Typography component="h2" variant="h3" color="textPrimary">
+                       ₦76, 000.00
+                    </Typography>
+                    <Typography variant="h6" color="textSecondary">
+                      /yr
+                    </Typography>
+                  </div>
+                    <Typography variant="subtitle1" align="center">
+                      'Recruit 3 more travel accounts', 
+                      'earn points to travel any destination' 
+                      'within African continent'
+                    </Typography>
+                </CardContent>
+                <CardActions className={classes.cardActions}>
+                  <Button fullWidth variant="contained" color="primary">
+                    Buy Now
+                  </Button>
+                </CardActions>
+              </Card>
+            </Grid>
+            
+            
+             <Grid item xs={12} sm={6} md={4}>
+              <Card>
+                <CardHeader
+                  title="Gold"
+                  subheader="Easily Purchase"
+                  titleTypographyProps={{ align: 'center' }}
+                  subheaderTypographyProps={{ align: 'center' }}
+                  action={null}
+                  className={classes.cardHeader}
+                />
+                <CardContent>
+                  <div className={classes.cardPricing}>
+                    <Typography component="h2" variant="h3" color="textPrimary">
+                       ₦116, 000.00
+                    </Typography>
+                    <Typography variant="h6" color="textSecondary">
+                      /yr
+                    </Typography>
+                  </div>
+                    <Typography variant="subtitle1" align="center">
+                      'Recruit 3 more travel accounts', 
+                      'earn points to travel any destination' 
+                      'Emirates and Asia '
+                    </Typography>
+                </CardContent>
+                <CardActions className={classes.cardActions}>
+                  <Button fullWidth variant="outlined" color="primary">
+                    Buy Now
+                  </Button>
+                </CardActions>
+              </Card>
+            </Grid>
+      </Grid>
+        
+        
+        
+        
+        
         <Grid container spacing={40} alignItems="flex-end">
           {tiers.map(tier => (
             // Enterprise card is full width at sm breakpoint
@@ -184,24 +275,6 @@ function Pricing(props) {
           ))}
         </Grid>
       </main>
-      {/* Footer */}
-      <footer className={classNames(classes.footer, classes.layout)}>
-        <Grid container spacing={32} justify="space-evenly">
-          {footers.map(footer => (
-            <Grid item xs key={footer.title}>
-              <Typography variant="h6" color="textPrimary" gutterBottom>
-                {footer.title}
-              </Typography>
-              {footer.description.map(item => (
-                <Typography key={item} variant="subtitle1" color="textSecondary">
-                  {item}
-                </Typography>
-              ))}
-            </Grid>
-          ))}
-        </Grid>
-      </footer>
-      {/* End footer */}
     </React.Fragment>
   );
 }

@@ -5,12 +5,20 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import MaterialIcon from 'material-icons-react';
-import { Link } from 'react-router-dom';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardHeader from '@material-ui/core/CardHeader';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import StarIcon from '@material-ui/icons/StarBorder';
+import Button from '@material-ui/core/Button';
+
+import { NavLink, Link } from 'react-router-dom';
 import grid from './Content.css';
 import ImageGallery from '../ImageSlide/ImageSlide';
 import RegisterModal from '../../UI/Modal/Register/Register';
 import { AuthUserContext } from '../../Sessions';
-import { Button } from 'reactstrap';
+// import { Button } from 'reactstrap';
 import Aux from '../../../HOC/Aux/Aux';
 
 const styles = theme => ({
@@ -28,6 +36,44 @@ const styles = theme => ({
     color: '#ef5635',
   },
   
+  '@global': {
+    body: {
+      backgroundColor: theme.palette.common.white,
+    },
+  },
+  toolbarTitle: {
+    flex: 1,
+  },
+  layout: {
+    width: 'auto',
+    marginLeft: theme.spacing.unit * 3,
+    marginRight: theme.spacing.unit * 3,
+    [theme.breakpoints.up(900 + theme.spacing.unit * 3 * 2)]: {
+      width: 900,
+      marginLeft: 'auto',
+      marginRight: 'auto',
+    },
+  },
+  heroContent: {
+    maxWidth: 600,
+    margin: '0 auto',
+    padding: `${theme.spacing.unit * 8}px 0 ${theme.spacing.unit * 6}px`,
+  },
+  cardHeader: {
+    backgroundColor: theme.palette.grey[200],
+  },
+  cardPricing: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'baseline',
+    marginBottom: theme.spacing.unit * 2,
+  },
+  cardActions: {
+    [theme.breakpoints.up('sm')]: {
+      paddingBottom: theme.spacing.unit * 2,
+    },
+  },
+  
 });
 
 
@@ -41,8 +87,8 @@ class Content extends Component{
    
         return(
             <Aux>
-            <div className={classes.root}>
-                  <Grid className={grid.content} container spacing={24}>
+            <div className={classes.root} style={{width: '98%'}}>
+                  <Grid className={grid.content} style={{padding:"20px"}} container spacing={24}>
                         <Grid item xs={12}>
                         
                             <Paper className={classes.paper}>
@@ -55,85 +101,177 @@ class Content extends Component{
                         </Grid> 
                     </Grid> 
                     <Grid />
-                    <Typography style={{marginTop: '80px', marginBottom: "20px", textAlign: 'center', alignItems: 'center', width: '100%'}} variant="h5"  className={grid.content} gutterBottom>
-                                     Travelemaxhub Packages
-                    </Typography>
-                    <Grid container spacing={24} className={grid.content}>
-                        <Grid item xs={3}>
-                         
-                          <Paper className={classes.paper}>
-                          <MaterialIcon icon="calendar_view_day" color='#CD7F32' size={60}/>
-                          <Typography variant="h6" gutterBottom>
-                              BRONZE PACKAGE <br />
-                              ₦36, 000.00
-                         </Typography>
-                             A startup purchase of the BONZE PACKAGE with just a fee of ₦36,000 and recruiting 
-                             3 more travel accounts will earn you enough points to travel for your local vacations (your choice destination) within Nigeria.<br />
-                          <span style={{color:"#ef5635"}} className={classes.button}>
-                            <AuthUserContext.Consumer>
+                  
+                   <React.Fragment>
+                      <CssBaseline />
+                      <main className={classes.layout}>
+                        {/* Hero unit */}
+                        <div className={classes.heroContent}>
+                          <Typography component="h4" variant="h5" align="center" color="textPrimary" gutterBottom>
+                            Packages
+                          </Typography>
+                        </div>
+                        {/* End hero unit */}
+                        {/*New Price Grid*/}
+                        <Grid container spacing={40} alignItems="flex-end">
+                            <Grid item xs={12} sm={6} md={3}>
+                              <Card>
+                                <CardHeader
+                                  title="Bronze"
+                                  subheader="Easily Purchase"
+                                  titleTypographyProps={{ align: 'center' }}
+                                  subheaderTypographyProps={{ align: 'center' }}
+                                  action={null}
+                                  className={classes.cardHeader}
+                                />
+                                <CardContent>
+                                <div className={classes.cardPricing}>
+                                    <MaterialIcon icon="calendar_view_day" color='#CD7F32' size={60}/>
+                                 </div>
+                                  <div className={classes.cardPricing}>
+                                    <Typography component="h6" variant="h6" color="textPrimary">
+                                       ₦36, 000.00
+                                    </Typography>
+                                    <Typography variant="h6" color="textSecondary">
+                                      /yr
+                                    </Typography>
+                                  </div>
+                                    <Typography variant="subtitle1" align="center">
+                                       Recruit 3 more travel accounts, 
+                                       earn points to travel for local vacations
+                                       within Nigeria
+                                    </Typography>
+                                </CardContent>
+                                <CardActions className={classes.cardActions}>
+                                 <AuthUserContext.Consumer>
                                   {authUser =>
-                                    authUser ? <Button outline tag={Link} to={{pathname: '/package/subscribe/bronze', search: '?package_plan=bronze'}} color="secondary">Subscribe</Button> :  <RegisterModal />
-                                  }
-                            </AuthUserContext.Consumer>
-                          </span>
-                          </Paper>
-                        </Grid>
-                        <Grid item xs={3}>
-                          <Paper className={classes.paper}>
-                            <MaterialIcon icon="dns" color='#C0C0C0' size={60}/>
-                              <Typography variant="h6" gutterBottom>
-                                 SILVER PACKAGE <br />
-                                 ₦76, 000.00
-                             </Typography>
-                                 A startup purchase of the SILVER PACKAGE with just a fee of ₦76,000 and recruiting 
-                                 3 more travel accounts will earn you enough points to travel to the destination of your choice in any country within the African continent. <br />
-                             <span style={{color:"#ef5635"}} className={classes.button}>
-                               <AuthUserContext.Consumer>
-                                  {authUser =>
-                                    authUser ? <Button outline tag={Link} to={{pathname: '/package/subscribe/silver', search: '?package_plan=silver'}} color="secondary">Subscribe</Button> :  <RegisterModal />
-                                  }
-                               </AuthUserContext.Consumer>
-                            </span>
-                            </Paper>
-                        </Grid>
-                        <Grid item xs={3}>
-                          <Paper className={classes.paper}>
-                          <MaterialIcon icon="dashboard" color='#FFD700' size={60}/>
-                              <Typography variant="h6" gutterBottom>
-                                 GOLD PACKAGE <br />
-                                 ₦116, 000.00
-                             </Typography>
-                                  A startup purchase of the GOLD PACKAGE with a fee of just ₦116,000.00 and recruiting 
-                                  3 more travel accounts will earn you enough points to travel to the destination of your choice within Emirates and Asia <br />
-                            <span style={{color:"#ef5635"}} className={classes.button}>
-                                <AuthUserContext.Consumer>
-                                  {authUser =>
-                                    authUser ? <Button outline tag={Link} to={{pathname: '/package/subscribe/gold', search: '?package_plan=gold'}} color="secondary">Subscribe</Button> :  <RegisterModal />
-                                  }
-                               </AuthUserContext.Consumer>
-                            </span>
-                            </Paper>
-                        </Grid>
-                         <Grid item xs={3}>
-                          <Paper className={classes.paper}>
-                          <MaterialIcon icon="polymer" color='#E5E4E2' size={60}/>
-                              <Typography variant="h6" gutterBottom>
-                                 PLATINIUM PACKAGE <br />
-                                 ₦151, 000.00
-                             </Typography>
-                                 Purchase the PLATINIUM PACKAGE with just a fee of  ₦151, 000.00, recruit 
-                                 3 more travel accounts to earn enough points to travel to your choice destination within Emirates, Asia, USA, UK etc  <br />
-                            <span style={{color:"#ef5635"}} className={classes.button}>
-                                <AuthUserContext.Consumer>
-                                  {authUser =>
-                                    authUser ? <Button outline tag={Link} to={{pathname: '/package/subscribe/platinium', search: '?package_plan=platinium'}} color="secondary">Subscribe</Button> :  <RegisterModal />
-                                  }
-                               </AuthUserContext.Consumer>
-                            </span>
-                            </Paper>
-                        </Grid>
-                    </Grid>
-                     <Grid className={grid.content} container spacing={24}>
+                                    authUser ? <Button fullWidth variant="outlined" tag={Link} color="primary" href='/package/subscribe/bronze'><NavLink to={{pathname: '/package/subscribe/bronze', search: '?package_plan=bronze'}}>Buy Now</NavLink></Button> : <Button fullWidth variant="outlined" tag={Link} color="primary" href='/register'><NavLink to='/register'>Get Started</NavLink></Button>
+                                   }
+                                 </AuthUserContext.Consumer>
+                                </CardActions>
+                              </Card>
+                            </Grid>
+                            
+                            
+                            <Grid item xs={12} sm={6} md={3}>
+                              <Card>
+                                <CardHeader
+                                  title="Silver"
+                                  subheader="Most Popular"
+                                  titleTypographyProps={{ align: 'center' }}
+                                  subheaderTypographyProps={{ align: 'center' }}
+                                  action={<StarIcon />}
+                                  className={classes.cardHeader}
+                                />
+                                <CardContent>
+                                <div className={classes.cardPricing}>
+                                  <MaterialIcon icon="dns" color='#C0C0C0' size={60}/>
+                                 </div>
+                                 <div className={classes.cardPricing}>
+                                    <Typography component="h6" variant="h6" color="textPrimary">
+                                       ₦76, 000.00
+                                    </Typography>
+                                    <Typography variant="h6" color="textSecondary">
+                                      /yr
+                                    </Typography>
+                                  </div>
+                                    <Typography variant="subtitle1" align="center">
+                                       Recruit 3 more travel accounts, 
+                                       earn points to travel any destination
+                                       within African continent
+                                    </Typography>
+                                </CardContent>
+                                <CardActions className={classes.cardActions}>
+                                  <AuthUserContext.Consumer>
+                                    {authUser =>
+                                     authUser ? <Button fullWidth variant="contained" color="primary" tag={Link} href="/package/subscribe/silver"><NavLink to={{pathname: '/package/subscribe/silver', search: '?package_plan=silver'}}>Buy Now</NavLink></Button> : <Button fullWidth variant="outlined" tag={Link} color="primary" href='/register'><NavLink to='/register'>Get Started</NavLink></Button>
+                                    }
+                                   </AuthUserContext.Consumer>
+                                </CardActions>
+                              </Card>
+                            </Grid>
+                            
+                            
+                             <Grid item xs={12} sm={6} md={3}>
+                              <Card>
+                                <CardHeader
+                                  title="Gold"
+                                  subheader="Easily Purchase"
+                                  titleTypographyProps={{ align: 'center' }}
+                                  subheaderTypographyProps={{ align: 'center' }}
+                                  action={null}
+                                  className={classes.cardHeader}
+                                />
+                                <CardContent>
+                                <div className={classes.cardPricing}>
+                                   <MaterialIcon icon="dashboard" color='#FFD700' size={60}/>
+                                 </div>
+                                 <div className={classes.cardPricing}>
+                                    <Typography component="h6" variant="h6" color="textPrimary">
+                                       ₦116, 000.00
+                                    </Typography>
+                                    <Typography variant="h6" color="textSecondary">
+                                      /yr
+                                    </Typography>
+                                  </div>
+                                    <Typography variant="subtitle1" align="center">
+                                       Recruit 3 more travel accounts,
+                                       earn points to travel to any destination 
+                                       Emirates and Asia
+                                    </Typography>
+                                </CardContent>
+                                <CardActions className={classes.cardActions}>
+                                  <AuthUserContext.Consumer>
+                                    {authUser =>
+                                      authUser ? <Button fullWidth variant="outlined" color="primary" tag={Link} href="/package/subscribe/gold"><NavLink to={{pathname: '/package/subscribe/gold', search: '?package_plan=gold'}}>Buy Now</NavLink></Button> :  <Button fullWidth variant="outlined" tag={Link} color="primary" href='/register'><NavLink to='/register'>Get Started</NavLink></Button>
+                                    }
+                                  </AuthUserContext.Consumer>
+                                </CardActions>
+                              </Card>
+                            </Grid>
+                            
+                            <Grid item xs={12} sm={6} md={3}>
+                              <Card>
+                                <CardHeader
+                                  title="Platinium"
+                                  subheader="Easily Purchase"
+                                  titleTypographyProps={{ align: 'center' }}
+                                  subheaderTypographyProps={{ align: 'center' }}
+                                  action={null}
+                                  className={classes.cardHeader}
+                                />
+                                <CardContent>
+                                <div className={classes.cardPricing}>
+                                  <MaterialIcon icon="polymer" color='#E5E4E2' size={60}/>
+                                 </div>
+                                 <div className={classes.cardPricing}>
+                                    <Typography component="h6" variant="h6" color="textPrimary">
+                                       ₦151, 000.00
+                                    </Typography>
+                                    <Typography variant="h6" color="textSecondary">
+                                      /yr
+                                    </Typography>
+                                  </div>
+                                    <Typography variant="subtitle1" align="center">
+                                      Recruit 3 more travel accounts, 
+                                      earn points to travel 
+                                      within  Emirates, Asia, USA, UK etc
+                                    </Typography>
+                                </CardContent>
+                                <CardActions className={classes.cardActions}>
+                                  <AuthUserContext.Consumer>
+                                    {authUser =>
+                                     authUser ? <Button fullWidth variant="outlined" color="primary" tag={Link} href="/package/subscribe/platinium"><NavLink to={{pathname: '/package/subscribe/platinium', search: '?package_plan=platinium'}}>Buy Now</NavLink></Button> :  <Button fullWidth variant="outlined" tag={Link} color="primary" href='/register'><NavLink to='/register'>Get Started</NavLink></Button>
+                                    }
+                                  </AuthUserContext.Consumer>
+                                </CardActions>
+                              </Card>
+                            </Grid>
+                      </Grid>
+                    </main>
+                   </React.Fragment>
+                   
+                   <Grid className={grid.content} style={{padding: "20px"}} container spacing={24}>
                         <Grid item xs={12} style={{marginTop: '50px'}}>
                         
                             <Paper className={classes.paper}>
@@ -149,7 +287,7 @@ class Content extends Component{
                     <Typography style={{marginTop: '80px', marginBottom: "20px", textAlign: 'center', alignItems: 'center', width: '100%'}} variant="h5"  className={grid.content} gutterBottom>
                                      Why travellers use Travelemaxhub
                     </Typography>
-                    <Grid container spacing={24} className={grid.content}>
+                    <Grid container spacing={24} style={{padding: "30px", marginTop: "20px"}} className={grid.content}>
                         <Grid item xs>
                          
                           <Paper className={classes.paper}>
@@ -189,7 +327,9 @@ class Content extends Component{
                                  <Typography variant="h5" gutterBottom>
                                      Most Popular Destinations
                                  </Typography>
+                                    <div style={{padding: "30px"}}>
                                      <ImageGallery />
+                                    </div>
                                  </Paper>
                         </Grid> 
                     </Grid> 

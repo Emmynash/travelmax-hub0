@@ -1,12 +1,11 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import RegisterModal from '../Register/Register';
 import SimpleReactValidator from 'simple-react-validator';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import Spinner from '../Spinner/Spinner';
 import { withFirebase } from '../../../Firebase';
 import PasswordForget from '../../../PasswordForget';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter,  Form, FormGroup, Label, Input } from 'reactstrap';
+import { Button, Container, Col, Row,  Form, FormGroup, Label, Input } from 'reactstrap';
 
 class LoginModal extends React.Component {
   _isMounted = false;
@@ -104,18 +103,23 @@ class LoginModal extends React.Component {
     }
     return (
       <div>
-        <Button color="link" style={{color: '#ef5635', textDecoration: 'none'}} onClick={this.toggle}>Login</Button>
-        <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-          <ModalHeader toggle={this.toggle} style={{color:"#ef5635"}}>Please Login!</ModalHeader>
-          <ModalBody>
+         <Container>
+         <Row>
+          <Col sm="12" md={{ size: 6, offset: 3 }}>
+             <h4  style={{color:"#ef5635", marginTop: "20px"}}>Please Login!</h4>
+          </Col>
+         </Row>
+         <Row>
+          <Col sm="12" md={{ size: 6, offset: 3 }}>
            {form}
-           <PasswordForget />
-          </ModalBody>
-          <ModalFooter>
-            <div><span>Don't have an account yet? <RegisterModal /></span></div>
-            <Button color="secondary" onClick={this.toggle}>Cancel</Button>
-          </ModalFooter>
-        </Modal>
+            <PasswordForget />
+            <div>
+             <div><span>Don't have an account yet? <Button tag={Link} to='/register' color="link">Register</Button></span></div>
+              <Button color="secondary" tag={Link} to='/'>Cancel</Button>
+            </div>
+          </Col>
+        </Row>
+        </Container>
       </div>
     );
   }

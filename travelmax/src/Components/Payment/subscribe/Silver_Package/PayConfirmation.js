@@ -44,7 +44,7 @@ class Subscribe extends React.Component {
   }
   render() {
     return (
-      <div style={{marginTop: "20px"}}>
+      <div>
         <Nav tabs>
           <NavItem>
             <NavLink
