@@ -7,6 +7,12 @@ import AkwaIbom from '../../../Assets/Images/Slider/most_visited/Akwa-Ibom.jpg';
 import Dubai from '../../../Assets/Images/Slider/most_visited/Dubai.jpg';
 import Kano from '../../../Assets/Images/Slider/most_visited/Kano.jpg';
 import Jos from '../../../Assets/Images/Slider/most_visited/Jos.jpg';
+import Chicago from '../../../Assets/Images/Slider/most_visited/Chicago.jpg';
+import MagicalMiami from '../../../Assets/Images/Slider/most_visited/Magical_Miami.jpg';
+import Emirates from '../../../Assets/Images/Slider/most_visited/Emirates.jpg';
+import QatarWashington from '../../../Assets/Images/Slider/most_visited/QatarWashington.jpg';
+import Guangzhou from '../../../Assets/Images/Slider/most_visited/Guangzhou.jpg';
+
 
 
 const slideShow = () => (
@@ -32,8 +38,28 @@ const slideShow = () => (
       <p className="legend">Jos, Nigeria</p>
     </div>
      <div>
-      <img alt="Slider(4)" src={Durban} />
+      <img alt="Slider(5)" src={Durban} />
       <p className="legend">Durban, South Africa</p>
+    </div>
+    <div>
+      <img alt="Slider(6)" src={MagicalMiami} />
+      <p className="legend">Magical Miami, USA</p>
+    </div>
+    <div>
+      <img alt="Slider(7)" src={Guangzhou} />
+      <p className="legend">Guangzhou,China</p>
+    </div>
+    <div>
+      <img alt="Slider(8)" src={Emirates} />
+      <p className="legend">Emirates, Middle East</p>
+    </div>
+    <div>
+      <img alt="Slider(9)" src={Chicago} />
+      <p className="legend">Chicago, USA</p>
+    </div>
+    <div>
+      <img alt="Slider(10)" src={QatarWashington} />
+      <p className="legend">Washington, USA</p>
     </div>
   </Carousel>
 );

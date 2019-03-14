@@ -96,7 +96,7 @@ class Content extends Component{
                                  <Typography variant="h4" gutterBottom>
                                     Travelling made easy with Travelemaxhub
                                  </Typography>
-                                                           Dreamed of taking a trip? Travelemaxhub is the key. Register with a start fee of N35,000 and enjoy a trip to any region within Nigeria. Guess what? Referred others to rgister via your unique code and enjoy some Amazing Bonuses, Just like that! <br /> <strong> Read More </strong>
+                                                           Dreamed of taking a trip? Travelemaxhub is the key. Register with a start fee of N36,000 and enjoy a trip to any region within Nigeria. Guess what? Referred others to rgister via your unique code and enjoy some Amazing Bonuses, Just like that! <br /> <strong> Read More </strong>
                             </Paper>
                         </Grid> 
                     </Grid> 
@@ -106,7 +106,7 @@ class Content extends Component{
                       <CssBaseline />
                       <main className={classes.layout}>
                         {/* Hero unit */}
-                        <div className={classes.heroContent}>
+                        <div id="packages" className={classes.heroContent}>
                           <Typography component="h4" variant="h5" align="center" color="textPrimary" gutterBottom>
                             Packages
                           </Typography>
@@ -133,7 +133,7 @@ class Content extends Component{
                                        ₦36, 000.00
                                     </Typography>
                                     <Typography variant="h6" color="textSecondary">
-                                      /yr
+                                      
                                     </Typography>
                                   </div>
                                     <Typography variant="subtitle1" align="center">
@@ -145,7 +145,7 @@ class Content extends Component{
                                 <CardActions className={classes.cardActions}>
                                  <AuthUserContext.Consumer>
                                   {authUser =>
-                                    authUser ? <Button fullWidth variant="outlined" tag={Link} color="primary" href='/package/subscribe/bronze'><NavLink to={{pathname: '/package/subscribe/bronze', search: '?package_plan=bronze'}}>Buy Now</NavLink></Button> : <Button fullWidth variant="outlined" tag={Link} color="primary" href='/register'><NavLink to='/register'>Get Started</NavLink></Button>
+                                    authUser ? <Button fullWidth variant="outlined" tag={Link} color="primary" href='/package/subscribe/bronze'>Buy Now</Button> : <Button fullWidth variant="outlined" tag={Link} color="primary" href='/register'>Get Started</Button>
                                    }
                                  </AuthUserContext.Consumer>
                                 </CardActions>
@@ -172,7 +172,7 @@ class Content extends Component{
                                        ₦76, 000.00
                                     </Typography>
                                     <Typography variant="h6" color="textSecondary">
-                                      /yr
+                                      
                                     </Typography>
                                   </div>
                                     <Typography variant="subtitle1" align="center">
@@ -184,7 +184,7 @@ class Content extends Component{
                                 <CardActions className={classes.cardActions}>
                                   <AuthUserContext.Consumer>
                                     {authUser =>
-                                     authUser ? <Button fullWidth variant="contained" color="primary" tag={Link} href="/package/subscribe/silver"><NavLink to={{pathname: '/package/subscribe/silver', search: '?package_plan=silver'}}>Buy Now</NavLink></Button> : <Button fullWidth variant="outlined" tag={Link} color="primary" href='/register'><NavLink to='/register'>Get Started</NavLink></Button>
+                                     authUser ? <Button fullWidth variant="contained" color="primary" tag={Link} href="/package/subscribe/silver">Buy Now</Button> : <Button fullWidth variant="outlined" tag={Link} color="primary" href='/register'>Get Started</Button>
                                     }
                                    </AuthUserContext.Consumer>
                                 </CardActions>
@@ -211,7 +211,7 @@ class Content extends Component{
                                        ₦116, 000.00
                                     </Typography>
                                     <Typography variant="h6" color="textSecondary">
-                                      /yr
+                                      
                                     </Typography>
                                   </div>
                                     <Typography variant="subtitle1" align="center">
@@ -223,7 +223,7 @@ class Content extends Component{
                                 <CardActions className={classes.cardActions}>
                                   <AuthUserContext.Consumer>
                                     {authUser =>
-                                      authUser ? <Button fullWidth variant="outlined" color="primary" tag={Link} href="/package/subscribe/gold"><NavLink to={{pathname: '/package/subscribe/gold', search: '?package_plan=gold'}}>Buy Now</NavLink></Button> :  <Button fullWidth variant="outlined" tag={Link} color="primary" href='/register'><NavLink to='/register'>Get Started</NavLink></Button>
+                                      authUser ? <Button fullWidth variant="outlined" color="primary" tag={Link} href="/package/subscribe/gold">Buy Now</Button> :  <Button fullWidth variant="outlined" tag={Link} color="primary" href='/register'>Get Started</Button>
                                     }
                                   </AuthUserContext.Consumer>
                                 </CardActions>
@@ -249,7 +249,7 @@ class Content extends Component{
                                        ₦151, 000.00
                                     </Typography>
                                     <Typography variant="h6" color="textSecondary">
-                                      /yr
+                                      
                                     </Typography>
                                   </div>
                                     <Typography variant="subtitle1" align="center">
@@ -261,7 +261,7 @@ class Content extends Component{
                                 <CardActions className={classes.cardActions}>
                                   <AuthUserContext.Consumer>
                                     {authUser =>
-                                     authUser ? <Button fullWidth variant="outlined" color="primary" tag={Link} href="/package/subscribe/platinium"><NavLink to={{pathname: '/package/subscribe/platinium', search: '?package_plan=platinium'}}>Buy Now</NavLink></Button> :  <Button fullWidth variant="outlined" tag={Link} color="primary" href='/register'><NavLink to='/register'>Get Started</NavLink></Button>
+                                     authUser ? <Button fullWidth variant="outlined" color="primary" tag={Link} href="/package/subscribe/platinium">Buy Now</Button> :  <Button fullWidth variant="outlined" tag={Link} color="primary" href='/register'>Get Started</Button>
                                     }
                                   </AuthUserContext.Consumer>
                                 </CardActions>
@@ -279,7 +279,7 @@ class Content extends Component{
                                  <Typography variant="h4" gutterBottom>
                                     Travelemaxhub: Cheap flights, and incredible hotels
                                  </Typography>
-                                                           Travelemaxhub is one of Africa’s leading online travel agency. Based in the beautiful city of Jos, Nigeria. Hundreds of Travelemaxhubes are dedicated to rocking your travel world. We want our customers to spend less time planning their travels and more time on holiday. Our mission is to save you time, money and stress with our simple online booking platform. You can search, compare and book your travel all in one place.
+                                                           Travelemaxhub is one of Africa’s leading online travel agency, based in Nigeria. Hundreds of Travelemaxhubes are dedicated to rocking your travel world. We want our customers to spend less time planning their travels and more time on holiday. Our mission is to save you time, money and stress with our simple online booking platform. You can search, compare and book your travel all in one place.
                             </Paper>
                         </Grid> 
                     </Grid> 
@@ -324,10 +324,10 @@ class Content extends Component{
                         
                             <Paper className={classes.paper}>
                            
-                                 <Typography variant="h5" gutterBottom>
+                                 <Typography variant="h5" gutterBottom style={{marginBottom: "-80px"}}>
                                      Most Popular Destinations
                                  </Typography>
-                                    <div style={{padding: "30px"}}>
+                                    <div style={{padding: "110px"}}>
                                      <ImageGallery />
                                     </div>
                                  </Paper>

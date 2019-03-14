@@ -29,7 +29,7 @@ import {Link} from 'react-router-dom';
 
 import { mainListItems, secondaryListItems } from './listItems';
 import SimpleLineChart from './SimpleLineChart';
-import SimpleTable from './SimpleTable';
+import Album from './Album';
 import { withAuthorization, AuthUserContext } from '../../../Components/Sessions';
 
 const drawerWidth = 240;
@@ -209,94 +209,43 @@ class Dashboard extends React.Component {
           <div className={classes.appBarSpacer} />
            <Grid container spacing={24}>
             <Grid item xs={12}>
-              <Paper className={classes.paper}>Referrals Tree</Paper>
-            </Grid>
-           </Grid>
-           <AuthUserContext.Consumer>
+            <AuthUserContext.Consumer>
                 {authUser => (
                   <div>
-                    <span style={{color: '#ef5635'}}>ID</span> : <b>`TR${authUser.uid}`</b>
+                    <Paper className={classes.paper}>
+                      <p> Referrals Tree </p> 
+                      <span style={{color: '#ef5635'}}>ID</span> : <b>TR${authUser.uid.slice(24)}</b>
+                    </Paper>
                   </div>
                 )}
             </AuthUserContext.Consumer>
+            </Grid>
+           </Grid>
           <Typography variant="h6" gutterBottom component="h2">
             Activities
           </Typography>
           <Typography component="div" className={classes.chartContainer}>
             <SimpleLineChart />
           </Typography>
-          <Typography variant="h6" gutterBottom component="h2">
-            Packages
-          </Typography>
           <div className={classes.tableContainer}>
-            <SimpleTable />
+            <Album />
           </div>
-          <ExpansionPanel>
-                <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                  <Typography variant="h6" gutterBottom component="h2">
-                    Consume Package?
-                    <Typography variant="h8" style={{color: "#ef5635"}}> Click and fill in the form</Typography>
-                  </Typography> 
-                </ExpansionPanelSummary>
-                <ExpansionPanelDetails>
-                  <Typography>
-                    <AuthUserContext.Consumer>
-                           {authUser => (
-                                  <Component didMount={() => console.log(authUser)}>
-                                    <Form>
-                                        <Row form>
-                                          <Col md={6}>
-                                            <FormGroup>
-                                              <Label for="email">Email</Label>
-                                              <Input type="email" name="email" value={authUser.email} id="email" placeholder="User Email" />
-                                            </FormGroup>
-                                          </Col>
-                                          <Col md={6}>
-                                            <FormGroup>
-                                              <Label for="userid">User Id</Label>
-                                              <Input type="text" value={`TR${authUser.uid}`} name="userid" id="userid" placeholder="User Id " />
-                                            </FormGroup>
-                                          </Col>
-                                        </Row>
-                                        <FormGroup>
-                                          <Label for="departCity">Departure City</Label>
-                                          <Input type="text" name="departCity" id="departCity" placeholder="Current City"/>
-                                        </FormGroup>
-                                        <FormGroup>
-                                          <Label for="prefDest">Preferred Destination</Label>
-                                          <Input type="text" name="prefDest" id="prefDest" placeholder="Flying To......."/>
-                                        </FormGroup>
-                                        <FormGroup>
-                                          <Label for="date">Date</Label>
-                                          <Input type="text" name="date" id="date" placeholder="On this Day"/>
-                                        </FormGroup>
-                                        <Button>Submit</Button>
-                                      </Form>
-                                  </Component>
-                            )}
-                             
-                     </AuthUserContext.Consumer>
-                  </Typography>
-                </ExpansionPanelDetails>
-          </ExpansionPanel>
-          
-         <div style={{marginTop: "20px"}} className={classes.tableContainer}>
-          <Typography variant="h6" gutterBottom component="h2">
+         <div style={{marginTop: "300px"}} className={classes.tableContainer}>
+          <Typography style={{marginBottom: '10px'}} variant="h6" gutterBottom align="center" color="textPrimary" component="h2">
             Calendar
           </Typography>
           <div className={classes.tableContainer}>
-          <TabContent activeTab={this.state.activeTab}>
+          <TabContent activeTab={this.state.activeTab} style={{alignItems: 'center'}}>
               <TabPane tabId="1">
                   <Row>
                    <Table borderless>
                     <Row>
-                      <Col xs="8" sm="4"><Calendar
+                      <Col xs="9" sm="9"><Calendar
                                           onChange={this.onChange}
                                           value={this.state.date}
                                           />
                       </Col>
-                      <Col xs="4" sm="4"></Col>
-                      <Col sm="4">
+                      <Col xs="3" sm="3">
                         <span style={{alignItems: "center", marginBottom: "10px"}}>Check your Calendar, You maybe Travelling Soon!</span><Button tag={Link} color="link" to="/flights_search">Search & Book</Button>
                       </Col>
                     </Row>

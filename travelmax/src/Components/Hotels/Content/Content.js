@@ -87,13 +87,14 @@ class Content extends Component{
                   <Grid className={grid.content} style={{padding:"20px"}} container spacing={24}>
                         <Grid item xs={12}>
                             <Paper className={classes.paper}>
-                                 <Typography variant="h4" gutterBottom>
+                                 <Typography variant="h4" gutterBottom style={{marginBottom: "-20px"}}>
                                     Don't Know where to go? Let us inspire you!
                                  </Typography>
                                   <br /> <br />
-                                 <Typography variant="h5" gutterBottom>
+                                 <Typography variant="h5" gutterBottom style={{marginBottom: "-40px"}}>
                                     Top Cities
                                 </Typography>
+                                <div style={{padding: "110px"}}>
                                   <Carousel autoPlay>
                                     <div>
                                       <img alt="Slider(0)" src={Accra} />
@@ -120,6 +121,7 @@ class Content extends Component{
                                       <p className="legend">Johannesburg, South Africa</p>
                                     </div>
                                   </Carousel>
+                                </div>
                             </Paper>
                         </Grid> 
                     </Grid> 

@@ -1,5 +1,4 @@
 import React from 'react';
-import queryString from 'query-string';
 import { compose } from 'recompose';
 import { Link } from 'react-router-dom';
 
@@ -38,9 +37,7 @@ class Subscribe extends React.Component {
   }
   componentDidMount(){
     console.log(this.props.location.search);
-    // let value =  queryString.parse(this.props.location.search);
-    // console.log(value);
-    // return value;
+   
   }
   render() {
     return (
@@ -52,6 +49,14 @@ class Subscribe extends React.Component {
               onClick={() => { this.toggle('1'); }}
             >
               Subscription
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink
+              className={classnames({ active: this.state.activeTab === '2' })}
+              onClick={() => { this.toggle('1'); }}
+            >
+               <p style={{color: "#ef5635"}}><b>Recruit 3 more travel accounts, earn points to travel for local vacations within Nigeria</b></p>
             </NavLink>
           </NavItem>
         </Nav>
@@ -67,9 +72,9 @@ class Subscribe extends React.Component {
                                 <th>
                                    <AuthUserContext.Consumer>
                                       {authUser => (
-                                        <div>
+                                      <div>
                                          <span style={{color: "#ef5635", marginRight: "0px"}}>{authUser.email};</span><b>  Confirm Purchase</b>
-                                        </div>
+                                       </div>
                                       )}
                                    </AuthUserContext.Consumer>
                                 </th>
@@ -132,7 +137,7 @@ class Subscribe extends React.Component {
                       </Table>
                   </CardText>
                   <CardText>
-                        <span style={{ marginLeft: "20px", marginRight: "100px"}}><Button tag={Link} to='/' color="link">Cancel</Button></span>  <span style={{ marginLeft: "100px"}}><span style={{color: "#ef5635"}}><b>Help?</b></span> <Button tag={Link} to='/faq' color="link">FAQ</Button><Button tag={Link} to='/terms-and-conditions' color="link">Terms & Conditions</Button></span>
+                        <span style={{ marginLeft: "20px", marginRight: "100px"}}><Button tag={Link} to='/' color="link">Cancel</Button></span>  <span style={{ marginLeft: "100px"}}><span style={{color: "#ef5635"}}><b>Help?</b></span> <Button tag={Link} to='/faq' color="link">FAQ</Button><Button disabled tag={Link} to='/terms-and-conditions' color="link">Terms & Conditions</Button></span>
                   </CardText>
                </Card>
                <Card body>
