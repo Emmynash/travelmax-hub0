@@ -11,9 +11,9 @@ class PayStack extends React.Component {
     super(props);
     this.state = {
       modal: false,
-      key: process.env.REACT_APP_API_KEY_PAYSTACK_LIVE, //PAYSTACK PUBLIC KEY
+      key: process.env.REACT_APP_API_KEY_PAYSTACK_TEST, //PAYSTACK PUBLIC KEY
       email: "",  // customer email
-      amount: 11600000 //equals NGN36,000,
+      amount: 11600000 //equals NGN116,000,
   
     };
    

@@ -1,7 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import SimpleReactValidator from 'simple-react-validator';
-import { NavHashLink as NavLink } from 'react-router-hash-link';
+// import { NavHashLink as NavLink } from 'react-router-hash-link';
 import { withRouter, Link } from 'react-router-dom';
 import Spinner from '../Spinner/Spinner';
 import { withFirebase } from '../../../Firebase';

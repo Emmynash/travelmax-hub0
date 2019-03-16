@@ -17,11 +17,6 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import { compose } from 'recompose';
-import ExpansionPanel from '@material-ui/core/ExpansionPanel';
-import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
-import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import Component from '@reactions/component';
 import Calendar from 'react-calendar';
 
 import {Col, Row, Button, Form, FormGroup, Label, Input, TabContent, TabPane, Table, } from 'reactstrap';
@@ -227,34 +222,42 @@ class Dashboard extends React.Component {
           <Typography component="div" className={classes.chartContainer}>
             <SimpleLineChart />
           </Typography>
-          <div className={classes.tableContainer}>
-            <Album />
+          <div style={{marginTop: "30px"}} className={classes.tableContainer}>
+           <Grid  style={{padding: "20px"}} container spacing={24}>
+             <Grid item xs={12}>
+              <Typography style={{marginBottom: '10px'}} variant="h6" gutterBottom align="center" color="textPrimary" component="h2">
+                Calendar
+              </Typography>
+             <div className={classes.tableContainer}>
+                <TabContent activeTab={this.state.activeTab} style={{alignItems: 'center'}}>
+                    <TabPane tabId="1">
+                        <Row>
+                         <Table borderless>
+                          <Row>
+                            <Col xs="9" sm="9"><Calendar
+                                                onChange={this.onChange}
+                                                value={this.state.date}
+                                                />
+                            </Col>
+                            <Col xs="3" sm="3">
+                              <span style={{alignItems: "center", marginBottom: "10px"}}>Check your Calendar, You maybe Travelling Soon!</span><Button tag={Link} color="link" to="/flights_search">Search & Book</Button>
+                            </Col>
+                          </Row>
+                        </Table>
+                      </Row>
+                     </TabPane>
+                   </TabContent>
+              </div>
+             </Grid>
+            </Grid>
           </div>
-         <div style={{marginTop: "300px"}} className={classes.tableContainer}>
-          <Typography style={{marginBottom: '10px'}} variant="h6" gutterBottom align="center" color="textPrimary" component="h2">
-            Calendar
-          </Typography>
-          <div className={classes.tableContainer}>
-          <TabContent activeTab={this.state.activeTab} style={{alignItems: 'center'}}>
-              <TabPane tabId="1">
-                  <Row>
-                   <Table borderless>
-                    <Row>
-                      <Col xs="9" sm="9"><Calendar
-                                          onChange={this.onChange}
-                                          value={this.state.date}
-                                          />
-                      </Col>
-                      <Col xs="3" sm="3">
-                        <span style={{alignItems: "center", marginBottom: "10px"}}>Check your Calendar, You maybe Travelling Soon!</span><Button tag={Link} color="link" to="/flights_search">Search & Book</Button>
-                      </Col>
-                    </Row>
-                  </Table>
-                </Row>
-               </TabPane>
-             </TabContent>
-          </div>
-         </div>
+          <Grid  style={{padding: "20px"}} container spacing={24}>
+            <Grid item xs={12}>
+              <div className={classes.tableContainer}>
+                <Album />
+              </div>
+           </Grid>
+         </Grid>
         </main>
       </div>
     );

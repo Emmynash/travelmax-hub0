@@ -13,7 +13,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import StarIcon from '@material-ui/icons/StarBorder';
 import Button from '@material-ui/core/Button';
 
-import { NavLink, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import grid from './Content.css';
 import ImageGallery from '../ImageSlide/ImageSlide';
 import RegisterModal from '../../UI/Modal/Register/Register';
@@ -327,7 +327,7 @@ class Content extends Component{
                                  <Typography variant="h5" gutterBottom style={{marginBottom: "-80px"}}>
                                      Most Popular Destinations
                                  </Typography>
-                                    <div style={{padding: "110px"}}>
+                                    <div style={{padding: "80px"}}>
                                      <ImageGallery />
                                     </div>
                                  </Paper>

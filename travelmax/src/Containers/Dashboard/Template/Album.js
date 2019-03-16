@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
+import CssBaseline from '@material-ui/core/CssBaseline';
 import CardContent from '@material-ui/core/CardContent';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
@@ -69,7 +70,8 @@ function Album(props) {
 
   return (
     <React.Fragment>
-      <main>
+     <CssBaseline />
+      <main className={classes.layout}>
         {/* Hero unit */}
         <div className={classes.heroUnit}>
           <div className={classes.heroContent}>
@@ -94,7 +96,7 @@ function Album(props) {
         </div>
         <div className={classNames(classes.layout, classes.cardGrid)}>
           {/* End hero unit */}
-          <Grid container spacing={40} style={{marginTop: '-80px'}}>
+          <Grid container spacing={40} style={{marginTop: '-80px'}} alignItems="flex-end">
           
               <Grid item sm={6} md={4} lg={3}>
                 <Card className={classes.card}>

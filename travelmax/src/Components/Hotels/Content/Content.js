@@ -94,7 +94,7 @@ class Content extends Component{
                                  <Typography variant="h5" gutterBottom style={{marginBottom: "-40px"}}>
                                     Top Cities
                                 </Typography>
-                                <div style={{padding: "110px"}}>
+                                <div style={{padding: "80px"}}>
                                   <Carousel autoPlay>
                                     <div>
                                       <img alt="Slider(0)" src={Accra} />
