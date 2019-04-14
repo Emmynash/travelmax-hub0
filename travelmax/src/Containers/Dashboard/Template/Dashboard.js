@@ -463,7 +463,7 @@ class Dashboard extends React.Component {
                                                 />
                             </Col>
                             <Col xs="3" sm="3">
-                              <span style={{alignItems: "center", marginBottom: "10px"}}>Check your Calendar, You maybe Travelling Soon!</span><Button tag={Link} color="link" to="/flights_search">Search & Book</Button>
+                              <span style={{alignItems: "center", marginBottom: "10px"}}>Check your Calendar, You maybe Travelling Soon!</span><Button tag={Link} to="/flights_search" href='/flights_search' variant="outlined" color="primary">Search & Book</Button>
                             </Col>
                           </Row>
                         </Table>
