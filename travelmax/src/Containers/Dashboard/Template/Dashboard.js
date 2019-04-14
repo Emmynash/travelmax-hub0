@@ -18,14 +18,22 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import { compose } from 'recompose';
 import Calendar from 'react-calendar';
+import MaterialIcon from 'material-icons-react';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardHeader from '@material-ui/core/CardHeader';
+import StarIcon from '@material-ui/icons/StarBorder';
+import Button from '@material-ui/core/Button';
 
-import {Col, Row, Button, Form, FormGroup, Label, Input, TabContent, TabPane, Table, } from 'reactstrap';
-import {Link} from 'react-router-dom';
+import {Col, Row, TabContent, TabPane, Table, } from 'reactstrap';
+import { HashLink as Link } from 'react-router-hash-link';
 
 import { mainListItems, secondaryListItems } from './listItems';
 import SimpleLineChart from './SimpleLineChart';
 import Album from './Album';
 import { withAuthorization, AuthUserContext } from '../../../Components/Sessions';
+import { withFirebase } from '../../../Components/Firebase';
 
 const drawerWidth = 240;
 
@@ -47,6 +55,12 @@ const styles = theme => ({
     justifyContent: 'flex-end',
     padding: '0 8px',
     ...theme.mixins.toolbar,
+  },
+   cardPricing: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'baseline',
+    marginBottom: theme.spacing.unit * 2,
   },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
@@ -93,6 +107,9 @@ const styles = theme => ({
       width: theme.spacing.unit * 9,
     },
   },
+  heroButtons: {
+    marginTop: theme.spacing.unit * 4,
+  },
   appBarSpacer: theme.mixins.toolbar,
   content: {
     flexGrow: 1,
@@ -116,6 +133,8 @@ class Dashboard extends React.Component {
     open: true,
     date: new Date(),
      activeTab: '1',
+     packId: "",
+     user: ""
   };
   
   
@@ -136,10 +155,210 @@ class Dashboard extends React.Component {
   };
   
    onChange = date => this.setState({ date })
+   
+   componentDidMount(){
+     const authUser = this.context;
+     this.props.firebase
+        .userPackage(authUser.uid)
+        .on('value', snapshot => {
+          const usersObject = snapshot.val();
+          this.setState({
+            packId: usersObject
+          });
+      });
+      
+       this.props.firebase
+        .user(authUser.uid)
+        .on('value', snapshot => {
+          const usersObject = snapshot.val();
+          this.setState({
+            user: usersObject
+          });
+      });
+      // console.log(this.state.packId);
+   }
+   
+   componentWillUnmount(){
+      const authUser = this.context;
+      this.props.firebase
+        .userPackage(authUser.uid)
+        .off();
+   }
 
   render() {
     const { classes } = this.props;
-
+    const {packId, user} = this.state;
+    
+    
+    let userPackage = (
+      <React.Fragment>
+                      <CssBaseline />
+                      <main className={classes.layout} style={{marginTop: "40px", marginBottom: "40px"}}>
+                        {/* Hero unit */}
+                        <div id="packages" className={classes.heroContent}>
+                          <Typography component="h4" variant="h5" align="center" color="textPrimary" gutterBottom>
+                           <b> Currently Purchased <span style={{color: '#ef5635'}}>Package(s)</span></b>
+                          </Typography>
+                        </div>
+                        {/* End hero unit */}
+                        {/*New Price Grid*/}
+                        <Grid container spacing={40} alignItems="flex-end">
+                            <Grid item xs={12} sm={6} md={3}>
+                              <Card>
+                                <CardHeader
+                                  title="Bronze"
+                                  subheader="Starting Pack"
+                                  titleTypographyProps={{ align: 'center' }}
+                                  subheaderTypographyProps={{ align: 'center' }}
+                                  action={null}
+                                  className={classes.cardHeader}
+                                />
+                                <CardContent>
+                                <div className={classes.cardPricing}>
+                                    <MaterialIcon icon="calendar_view_day" color='#CD7F32' size={60}/>
+                                 </div>
+                                  <div className={classes.cardPricing}>
+                                    <Typography component="h6" variant="h6" color="textPrimary">
+                                       <b>₦36, 000.00</b>
+                                    </Typography>
+                                    <Typography variant="h6" color="textSecondary">
+                                    </Typography>
+                                  </div>
+                                </CardContent>
+                                <CardActions className={classes.cardActions}>
+                                {/* <AuthUserContext.Consumer>
+                                  {authUser =>
+                                    authUser ? <Button fullWidth variant="outlined" tag={Link} color="primary" href='/package/subscribe/bronze'>Buy Now</Button> : <Button fullWidth variant="outlined" tag={Link} color="primary" href='/register'>Get Started</Button>
+                                   }
+                                 </AuthUserContext.Consumer>*/}
+                                </CardActions>
+                              </Card>
+                            </Grid>
+                            
+                            
+                            <Grid item xs={12} sm={6} md={3} style={{display:"none"}}>
+                              <Card>
+                                <CardHeader
+                                  title="Silver"
+                                  subheader="Regular Pack"
+                                  titleTypographyProps={{ align: 'center' }}
+                                  subheaderTypographyProps={{ align: 'center' }}
+                                  action={<StarIcon />}
+                                  className={classes.cardHeader}
+                                />
+                                <CardContent>
+                                <div className={classes.cardPricing}>
+                                  <MaterialIcon icon="dns" color='#C0C0C0' size={60}/>
+                                 </div>
+                                 <div className={classes.cardPricing}>
+                                    <Typography component="h6" variant="h6" color="textPrimary">
+                                       <b>₦76, 000.00</b>
+                                    </Typography>
+                                    <Typography variant="h6" color="textSecondary">
+                                      
+                                    </Typography>
+                                  </div>
+                                </CardContent>
+                                <CardActions className={classes.cardActions}>
+                                 {/* <AuthUserContext.Consumer>
+                                    {authUser =>
+                                     authUser ? <Button fullWidth variant="contained" color="primary" tag={Link} href="/package/subscribe/silver">Buy Now</Button> : <Button fullWidth variant="outlined" tag={Link} color="primary" href='/register'>Get Started</Button>
+                                    }
+                                   </AuthUserContext.Consumer>*/}
+                                </CardActions>
+                              </Card>
+                            </Grid>
+                            
+                            
+                             <Grid item xs={12} sm={6} md={3} style={{display:"none"}}>
+                              <Card>
+                                <CardHeader
+                                  title="Gold"
+                                  subheader="Mega Pack"
+                                  titleTypographyProps={{ align: 'center' }}
+                                  subheaderTypographyProps={{ align: 'center' }}
+                                  action={null}
+                                  className={classes.cardHeader}
+                                />
+                                <CardContent>
+                                <div className={classes.cardPricing}>
+                                   <MaterialIcon icon="dashboard" color='#FFD700' size={60}/>
+                                 </div>
+                                 <div className={classes.cardPricing}>
+                                    <Typography component="h6" variant="h6" color="textPrimary">
+                                       <b>₦116, 000.00</b>
+                                    </Typography>
+                                    <Typography variant="h6" color="textSecondary">
+                                      
+                                    </Typography>
+                                  </div>
+                                </CardContent>
+                                <CardActions className={classes.cardActions}>
+                                  {/*<AuthUserContext.Consumer>
+                                    {authUser =>
+                                      authUser ? <Button fullWidth variant="outlined" color="primary" tag={Link} href="/package/subscribe/gold">Buy Now</Button> :  <Button fullWidth variant="outlined" tag={Link} color="primary" href='/register'>Get Started</Button>
+                                    }
+                                  </AuthUserContext.Consumer>*/}
+                                </CardActions>
+                              </Card>
+                            </Grid>
+                            
+                            <Grid item xs={12} sm={6} md={3} style={{display:"none"}}>
+                              <Card>
+                                <CardHeader
+                                  title="Platinium"
+                                  subheader="Ultimate Pack"
+                                  titleTypographyProps={{ align: 'center' }}
+                                  subheaderTypographyProps={{ align: 'center' }}
+                                  action={null}
+                                  className={classes.cardHeader}
+                                />
+                                <CardContent>
+                                <div className={classes.cardPricing}>
+                                  <MaterialIcon icon="polymer" color='#E5E4E2' size={60}/>
+                                 </div>
+                                 <div className={classes.cardPricing}>
+                                    <Typography component="h6" variant="h6" color="textPrimary">
+                                      <b> ₦151, 000.00 </b>
+                                    </Typography>
+                                    <Typography variant="h6" color="textSecondary">
+                                      
+                                    </Typography>
+                                  </div>
+                                </CardContent>
+                                <CardActions className={classes.cardActions}>
+                                 {/* <AuthUserContext.Consumer>
+                                    {authUser =>
+                                     authUser ? <Button fullWidth variant="outlined" color="primary" tag={Link} href="/package/subscribe/platinium">Buy Now</Button> :  <Button fullWidth variant="outlined" tag={Link} color="primary" href='/register'>Get Started</Button>
+                                    }
+                                  </AuthUserContext.Consumer>*/}
+                                </CardActions>
+                              </Card>
+                            </Grid>
+                      </Grid>
+                    </main>
+                   </React.Fragment>
+      );
+    
+    if(packId == null  || packId.packageId !== "brzPkg02k9"){
+      userPackage = (
+            <Grid container spacing={24}>
+              <Grid item xs={12}>
+                <Paper className={classes.paper}>
+                  <h4><span style={{color: '#ef5635'}}><b>Oops!</b></span> Your Package lock is empty </h4>
+                  <p><b> Please, purchase a package with as low as ₦36,000 to enjoy exciting benefits</b></p>
+                   <Grid item>
+                     <div className={classes.heroButtons}>
+                        <Button tag={Link} to='#packages/' href='/' variant="outlined" color="primary">
+                         Buy Package
+                        </Button>
+                      </div>
+                  </Grid>
+                </Paper>
+              </Grid>
+            </Grid>
+        );
+    }
     return (
       <div className={classes.root}>
         <CssBaseline />
@@ -169,18 +388,19 @@ class Dashboard extends React.Component {
             >
               Dashboard
             </Typography>
-             <AuthUserContext.Consumer>
+             {/*<AuthUserContext.Consumer>
                 {authUser => (
                   <div>
                     Welcome; {authUser.email}
                   </div>
                 )}
-             </AuthUserContext.Consumer>
-            <IconButton color="inherit">
+             </AuthUserContext.Consumer>*/}
+            Welcome, <span style={{color: '#ef5635', marginLeft: "5px"}}>{user.lastname}</span>
+           {/* <IconButton color="inherit">
               <Badge badgeContent={4} color="secondary">
-                <NotificationsIcon />
+               <NotificationsIcon />
               </Badge>
-            </IconButton>
+            </IconButton>*/}
           </Toolbar>
         </AppBar>
         <Drawer
@@ -216,6 +436,9 @@ class Dashboard extends React.Component {
             </AuthUserContext.Consumer>
             </Grid>
            </Grid>
+           
+            {userPackage}
+           
           <Typography variant="h6" gutterBottom component="h2">
             Activities
           </Typography>
@@ -268,6 +491,8 @@ Dashboard.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
+Dashboard.contextType  = AuthUserContext;
+
 const condition = authUser => !!authUser;
-export default compose(withStyles(styles), withAuthorization(condition))(Dashboard);
+export default compose(withStyles(styles), withAuthorization(condition))(withFirebase(Dashboard));
 

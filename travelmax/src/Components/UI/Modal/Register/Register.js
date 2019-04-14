@@ -74,6 +74,7 @@ class RegisterModal extends React.Component {
       };
         this.props.firebase.doCreateUserWithEmailAndPassword(email, password)
         .then(authUser =>{
+          console.log(authUser.user);
           // Create a user in your Firebase realtime database
         return this.props.firebase
           .user(authUser.user.uid)

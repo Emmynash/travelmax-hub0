@@ -6,7 +6,7 @@ import SearchBar from '../Search/Search';
 
 const bkImage = (props) =>{
     return(
-         <div style={{zIndex:200, marginTop:'30'}}>
+         <div style={{zIndex:200, marginTop:'0'}}>
                   
             <SearchBar />
            

@@ -106,7 +106,7 @@ class Content extends Component{
                       <CssBaseline />
                       <main className={classes.layout}>
                         {/* Hero unit */}
-                        <div id="packages" className={classes.heroContent}>
+                        <div className={classes.heroContent} id="packages">
                           <Typography component="h4" variant="h5" align="center" color="textPrimary" gutterBottom>
                             Packages
                           </Typography>

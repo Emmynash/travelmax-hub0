@@ -39,6 +39,12 @@ class Firebase {
     user = uid => this.db.ref(`users/${uid}`);
     
     users = () => this.db.ref('users');
+    
+    // **** Package API ***
+    
+    userPackage =  uid => this.db.ref(`packages/${uid}`);
+    
+    userPackages = () => this.db.ref('packages');
 }
 
 export default Firebase;

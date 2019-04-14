@@ -3,6 +3,7 @@ import PaystackButton from 'react-paystack';
 import { Button, Modal, ModalHeader, ModalBody, } from 'reactstrap';
 import { withRouter } from 'react-router-dom';
 import { AuthUserContext } from  '../../../Sessions';
+import { withFirebase } from '../../../Firebase';
 import Component from '@reactions/component';
 
 
@@ -29,18 +30,26 @@ class PayStack extends React.Component {
   }
   
    callback = (response) => {
-    		console.log(response); // card charged successfully, get reference here
-    		this.props.history.push({pathname: '/dashboard'});
+     
+    
+     const authUser = this.context;
+     
+          this.props.firebase
+          .userPackage(authUser.uid)
+          .set({
+            packageId: "brzPkg02k9",
+            transaction: response,
+            email: authUser.email
+          })
+          .then(() => {
+            	 this.props.history.push({pathname: '/dashboard'});
+          });
+   
+    		// console.log(response)// card charged successfully, get reference here
+    		
     	}
-
-  close = () => {
-    	console.log("Payment closed");
-    	this.setState(prevState => ({
-      modal: !prevState.modal
-    }));
-    }
-
-  getReference = () => {
+    	
+    	 getReference = () => {
     		//you can put any unique reference implementation code here
     	let text = "tr0012";
         let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-.=";
@@ -50,8 +59,26 @@ class PayStack extends React.Component {
 
     		return text;
     	}
-  componentDidMount(){
-    console.log(this.props.userEmail);
+
+  close = () => {
+    	console.log("Payment closed");
+    	this.setState(prevState => ({
+      modal: !prevState.modal
+    }));
+    }
+
+  componentDidMount() {
+    // let value = this.context;
+    // console.log(value);
+    /* perform a side-effect at mount using the value of UserContext */
+  }
+  componentDidUpdate() {
+    // let value = this.context;
+    /* ... */
+  }
+  componentWillUnmount() {
+    // let value = this.context;
+    /* ... */
   }
    
   render() {
@@ -66,7 +93,7 @@ class PayStack extends React.Component {
                     <p>
                     <AuthUserContext.Consumer>
                            {authUser => (
-                                  <Component didMount={() => console.log(authUser)}>
+                                  <Component didMount={() => console.log(authUser.email)}>
                                     <PaystackButton
                                         size="300px"
                                         text="Make Payment"
@@ -93,5 +120,6 @@ class PayStack extends React.Component {
     );
   }
 }
+PayStack.contextType  = AuthUserContext;
 
-export default (withRouter(PayStack));
+export default (withRouter(withFirebase(PayStack)));
