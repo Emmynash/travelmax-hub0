@@ -12,7 +12,7 @@ class PayStack extends React.Component {
     super(props);
     this.state = {
       modal: false,
-      key: process.env.REACT_APP_API_KEY_PAYSTACK_LIVE, //PAYSTACK PUBLIC KEY
+      key: process.env.REACT_APP_API_KEY_PAYSTACK_TEST, //PAYSTACK PUBLIC KEY
       email: "",  // customer email
       amount: 3600000 //equals NGN36,000,
   
@@ -33,11 +33,12 @@ class PayStack extends React.Component {
      
     
      const authUser = this.context;
+     console.log(process.env.REACT_APP_PACKAGE_BRONZE_ID);
      
           this.props.firebase
           .userPackage(authUser.uid)
           .set({
-            packageId: "brzPkg02k9",
+            packageId: process.env.REACT_APP_API_KEY_PACKAGE_BRONZE_ID,
             transaction: response,
             email: authUser.email
           })

@@ -3,6 +3,7 @@ import PaystackButton from 'react-paystack';
 import { Button, Modal, ModalHeader, ModalBody, } from 'reactstrap';
 import { withRouter } from 'react-router-dom';
 import { AuthUserContext } from  '../../../Sessions';
+import { withFirebase } from '../../../Firebase';
 import Component from '@reactions/component';
 
 
@@ -11,7 +12,7 @@ class PayStack extends React.Component {
     super(props);
     this.state = {
       modal: false,
-      key: process.env.REACT_APP_API_KEY_PAYSTACK_LIVE, //PAYSTACK PUBLIC KEY
+      key: process.env.REACT_APP_API_KEY_PAYSTACK_TEST, //PAYSTACK PUBLIC KEY
       email: "",  // customer email
       amount: 15100000 //equals NGN151,000,
   
@@ -29,8 +30,17 @@ class PayStack extends React.Component {
   }
   
    callback = (response) => {
-    		console.log(response); // card charged successfully, get reference here
-    		this.props.history.push({pathname: '/dashboard'});
+    		const authUser = this.context;
+    		this.props.firebase
+          .userPackage(authUser.uid)
+          .update({
+            platiniumPackId: process.env.REACT_APP_API_KEY_PACKAGE_PLATINIUM_ID
+          })
+          .then(() => {
+            	 this.props.history.push({pathname: '/dashboard'});
+          });
+   
+    		// console.log(response)// card charged successfully, get reference here
     	}
 
   close = () => {
@@ -94,4 +104,5 @@ class PayStack extends React.Component {
   }
 }
 
-export default (withRouter(PayStack));
+PayStack.contextType  = AuthUserContext;
+export default (withRouter(withFirebase(PayStack)));

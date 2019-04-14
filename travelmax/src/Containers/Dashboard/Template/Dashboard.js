@@ -226,17 +226,13 @@ class Dashboard extends React.Component {
                                   </div>
                                 </CardContent>
                                 <CardActions className={classes.cardActions}>
-                                {/* <AuthUserContext.Consumer>
-                                  {authUser =>
-                                    authUser ? <Button fullWidth variant="outlined" tag={Link} color="primary" href='/package/subscribe/bronze'>Buy Now</Button> : <Button fullWidth variant="outlined" tag={Link} color="primary" href='/register'>Get Started</Button>
-                                   }
-                                 </AuthUserContext.Consumer>*/}
                                 </CardActions>
                               </Card>
                             </Grid>
                             
                             
-                            <Grid item xs={12} sm={6} md={3} style={{display:"none"}}>
+                            {packId == null || packId.silverPackId  ?
+                            <Grid item xs={12} sm={6} md={3} style={{display:""}}>
                               <Card>
                                 <CardHeader
                                   title="Silver"
@@ -260,17 +256,14 @@ class Dashboard extends React.Component {
                                   </div>
                                 </CardContent>
                                 <CardActions className={classes.cardActions}>
-                                 {/* <AuthUserContext.Consumer>
-                                    {authUser =>
-                                     authUser ? <Button fullWidth variant="contained" color="primary" tag={Link} href="/package/subscribe/silver">Buy Now</Button> : <Button fullWidth variant="outlined" tag={Link} color="primary" href='/register'>Get Started</Button>
-                                    }
-                                   </AuthUserContext.Consumer>*/}
                                 </CardActions>
                               </Card>
                             </Grid>
+                            : ""
+                            }
                             
-                            
-                             <Grid item xs={12} sm={6} md={3} style={{display:"none"}}>
+                            {packId == null || packId.goldPackId ?
+                             <Grid item xs={12} sm={6} md={3} style={{display:""}}>
                               <Card>
                                 <CardHeader
                                   title="Gold"
@@ -294,16 +287,13 @@ class Dashboard extends React.Component {
                                   </div>
                                 </CardContent>
                                 <CardActions className={classes.cardActions}>
-                                  {/*<AuthUserContext.Consumer>
-                                    {authUser =>
-                                      authUser ? <Button fullWidth variant="outlined" color="primary" tag={Link} href="/package/subscribe/gold">Buy Now</Button> :  <Button fullWidth variant="outlined" tag={Link} color="primary" href='/register'>Get Started</Button>
-                                    }
-                                  </AuthUserContext.Consumer>*/}
                                 </CardActions>
                               </Card>
                             </Grid>
+                            : ""}
                             
-                            <Grid item xs={12} sm={6} md={3} style={{display:"none"}}>
+                            {packId == null || packId.platiniumPackId ?
+                            <Grid item xs={12} sm={6} md={3} style={{display:""}}>
                               <Card>
                                 <CardHeader
                                   title="Platinium"
@@ -327,20 +317,17 @@ class Dashboard extends React.Component {
                                   </div>
                                 </CardContent>
                                 <CardActions className={classes.cardActions}>
-                                 {/* <AuthUserContext.Consumer>
-                                    {authUser =>
-                                     authUser ? <Button fullWidth variant="outlined" color="primary" tag={Link} href="/package/subscribe/platinium">Buy Now</Button> :  <Button fullWidth variant="outlined" tag={Link} color="primary" href='/register'>Get Started</Button>
-                                    }
-                                  </AuthUserContext.Consumer>*/}
                                 </CardActions>
                               </Card>
                             </Grid>
+                            : ""
+                            }
                       </Grid>
                     </main>
                    </React.Fragment>
       );
     
-    if(packId == null  || packId.packageId !== "brzPkg02k9"){
+    if(packId == null  || packId.packageId !== process.env.REACT_APP_API_KEY_PACKAGE_BRONZE_ID){
       userPackage = (
             <Grid container spacing={24}>
               <Grid item xs={12}>
