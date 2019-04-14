@@ -1,10 +1,12 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import SimpleReactValidator from 'simple-react-validator';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
+import { compose } from 'recompose';
 import Spinner from '../UI/Modal/Spinner/Spinner';
 import { withFirebase } from '../Firebase';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter,  Form, FormGroup, Label, Input } from 'reactstrap';
+import { withAuthorization } from '../../Components/Sessions';
+import { Button, Container, Col, Row,  Form, FormGroup, Label, Input } from 'reactstrap';
 
 class PasswordUpdate extends React.Component {
   constructor(props) {
@@ -98,19 +100,25 @@ class PasswordUpdate extends React.Component {
     }
     return (
       <div>
-        <Button outline color="secondary" style={{color: '#ef5635', textDecoration: 'none'}} onClick={this.toggle}>Reset Pass</Button>
-        <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-          <ModalHeader toggle={this.toggle} style={{color:"#000"}}>Reset your current password. <br /><span style={{color:"#ef5635"}}> If password fields don't match, button will not be enable</span></ModalHeader>
-          <ModalBody>
+        <Container>
+         <Row>
+          <Col sm="12" md={{ size: 6, offset: 3 }}>
+             <h4  style={{color:"#ef5635", marginTop: "20px"}}>Reset your current password.</h4>
+          </Col>
+         </Row>
+         <Row>
+          <Col sm="12" md={{ size: 6, offset: 3 }}>
            {form}
-          </ModalBody>
-          <ModalFooter>
-            <Button color="secondary" onClick={this.toggle}>Cancel</Button>
-          </ModalFooter>
-        </Modal>
+            <div>
+              <Button style={{marginTop: "10px"}} color="secondary" tag={Link} to='/'>Cancel</Button>
+            </div>
+          </Col>
+         </Row>
+        </Container>
       </div>
     );
   }
 }
 
-export default (withRouter(withFirebase(PasswordUpdate)));
+const condition = authUser => !!authUser;
+export default compose( withAuthorization(condition)) (withRouter(withFirebase(PasswordUpdate)));

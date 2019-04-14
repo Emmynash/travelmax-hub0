@@ -14,7 +14,6 @@ import MoreIcon from '@material-ui/icons/MoreVert';
 
 import logo from '../../Assets/Images/Logo/TravelMax_Logo_orange.png';
 import SignOutButton from '../UI/Modal/Logout/Logout';
-import ResetPassword from '../PasswordChange';
 import { AuthUserContext } from '../Sessions';
 import { NavLink } from 'react-router-dom';
 
@@ -137,7 +136,7 @@ class PrimarySearchAppBar extends React.Component {
         <MenuItem onClick={this.handleMenuClose}>
         <AuthUserContext.Consumer>
                     {authUser =>
-                      authUser ? <ResetPassword /> : <NavLink style={{color:"#d8caca"}} to='/register'>Register</NavLink>
+                      authUser ? <NavLink style={{color:"#d8caca"}} to='/reset_password'>Reset Pass</NavLink> : <NavLink style={{color:"#d8caca"}} to='/register'>Register</NavLink>
                     }
         </AuthUserContext.Consumer>
         </MenuItem>
