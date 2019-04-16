@@ -68,13 +68,9 @@ class RegisterModal extends React.Component {
       this.setState({loading: true});
       const {firstname, lastname, phone, title} = this.state.userform;
       const {email, password} = this.state.InitRegisterUser;
-      const actionCodeSettings = {
-        url: "https://travelmaxhub.com",
-        handleCodeInApp: true
-      };
         this.props.firebase.doCreateUserWithEmailAndPassword(email, password)
         .then(authUser =>{
-          console.log(authUser.user);
+          // console.log(authUser.user);
           // Create a user in your Firebase realtime database
         return this.props.firebase
           .user(authUser.user.uid)
@@ -86,6 +82,9 @@ class RegisterModal extends React.Component {
             email,
           });
           })
+        .then(() => {
+          return this.props.firebase.doVerifyEmailAddress();
+        })
         .then(() => {
           this.setState({
             ...this.state.InitRegisterUser,
@@ -105,15 +104,15 @@ class RegisterModal extends React.Component {
           });
           console.log(error);
         });
-       this.props.firebase.doVerifyEmailAddress(email, actionCodeSettings)
-        .then(authUser => {
-          window.localStorage.setItem('emailForSignIn', email);
+      // this.props.firebase.doVerifyEmailAddress()
+      //   .then(authUser => {
+      //     window.localStorage.setItem('emailForSignIn', email);
           
-          console.log(authUser);
-        })
-        .catch(error =>{
-          console.log(error);
-        });
+      //     console.log(authUser);
+      //   })
+      //   .catch(error =>{
+      //     console.log(error);
+      //   });
     
     } else {
       this.validator.showMessages();

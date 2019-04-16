@@ -21,9 +21,6 @@ class Firebase {
     doCreateUserWithEmailAndPassword = (email, password) =>
         this.auth.createUserWithEmailAndPassword(email, password);
     
-    doVerifyEmailAddress = (email, actionCodeSettings) =>
-        this.auth.sendSignInLinkToEmail(email, actionCodeSettings);
-    
     doSignInWithEmailAndPassword = (email, password) => 
         this.auth.signInWithEmailAndPassword(email, password);
     
@@ -33,6 +30,13 @@ class Firebase {
     
     doPasswordUpdate = password =>
         this.auth.currentUser.updatePassword(password);
+    
+    doVerifyEmailAddress = () =>
+        this.auth.currentUser.sendEmailVerification({
+            url: process.env.REACT_APP_CONFIRMATION_EMAIL_REDIRECT
+        });
+    
+
     
     // *** User API ***
 

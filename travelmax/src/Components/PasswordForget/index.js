@@ -89,7 +89,7 @@ class PasswordReset extends React.Component {
     }
     return (
       <div>
-        <Button color="link" style={{color: '#ef5635', textDecoration: 'none'}} onClick={this.toggle}>Reset Password</Button>
+        <Button color="link" style={{color: '#ef5635', textDecoration: 'none'}} onClick={this.toggle}>Forgot password?</Button>
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
           <ModalHeader toggle={this.toggle} style={{color:"#ef5635"}}>Type in your email, get a link to reset your password</ModalHeader>
           <ModalBody>
